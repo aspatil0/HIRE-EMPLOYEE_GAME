@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scenes/interactables/props/wall_clock_prop.gd" id="1_prop"]
+[ext_resource type="Script" path="res://scripts/components/interactable.gd" id="2_hit"]
+
+[node name="WallClock" type="Node2D"]
+script = ExtResource("1_prop")
+
+[node name="Interactable" type="Area2D" parent="."]
+script = ExtResource("2_hit")
+interaction_id = &"wall_clock"
+display_name = "Wall Clock"
+action_verb = "Look"
+inspect_text = "It ticks louder at night. Or the building is just quieter."
+activate_inspects = true
+
+[node name="Shape1" type="CollisionPolygon2D" parent="Interactable"]
+polygon = PackedVector2Array(80.0, 0.0, 73.9, 30.6, 56.6, 56.6, 30.6, 73.9, 0.0, 80.0, -30.6, 73.9, -56.6, 56.6, -73.9, 30.6, -80.0, 0.0, -73.9, -30.6, -56.6, -56.6, -30.6, -73.9, -0.0, -80.0, 30.6, -73.9, 56.6, -56.6, 73.9, -30.6)

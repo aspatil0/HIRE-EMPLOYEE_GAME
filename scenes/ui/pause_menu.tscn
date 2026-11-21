@@ -1,0 +1,127 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scenes/ui/pause_menu.gd" id="1_pause"]
+[ext_resource type="Script" path="res://scenes/ui/menu_button_fx.gd" id="2_fx"]
+
+[sub_resource type="Gradient" id="Gradient_side"]
+offsets = PackedFloat32Array(0, 0.55, 1)
+colors = PackedColorArray(0, 0, 0.01, 0.95, 0, 0, 0.01, 0.8, 0, 0, 0.01, 0.35)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_side"]
+gradient = SubResource("Gradient_side")
+width = 256
+height = 16
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pause")
+
+[node name="Dim" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_side")
+expand_mode = 1
+
+[node name="Content" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Accent" type="ColorRect" parent="Content"]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 300.0
+offset_right = 143.0
+offset_bottom = 780.0
+mouse_filter = 2
+color = Color(0.71, 0.16, 0.14, 1)
+
+[node name="VBox" type="VBoxContainer" parent="Content"]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 290.0
+offset_right = 900.0
+offset_bottom = 820.0
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="Content/VBox"]
+layout_mode = 2
+theme_type_variation = &"TitleLabel"
+theme_override_font_sizes/font_size = 64
+text = "PAUSED"
+
+[node name="Sub" type="Label" parent="Content/VBox"]
+layout_mode = 2
+theme_type_variation = &"DimLabel"
+text = "THE FINAL HIRE"
+
+[node name="Gap" type="Control" parent="Content/VBox"]
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Resume" type="Button" parent="Content/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_type_variation = &"MenuTextButton"
+text = "RESUME"
+alignment = 0
+script = ExtResource("2_fx")
+
+[node name="Settings" type="Button" parent="Content/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_type_variation = &"MenuTextButton"
+text = "SETTINGS"
+alignment = 0
+script = ExtResource("2_fx")
+
+[node name="Save" type="Button" parent="Content/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_type_variation = &"MenuTextButton"
+text = "SAVE GAME"
+alignment = 0
+script = ExtResource("2_fx")
+
+[node name="MainMenu" type="Button" parent="Content/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_type_variation = &"MenuTextButton"
+text = "MAIN MENU"
+alignment = 0
+script = ExtResource("2_fx")
+
+[node name="Quit" type="Button" parent="Content/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_type_variation = &"MenuTextButton"
+text = "QUIT TO DESKTOP"
+alignment = 0
+script = ExtResource("2_fx")
+
+[node name="SaveStatus" type="Label" parent="Content/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"DimLabel"
+theme_override_colors/font_color = Color(0.95, 0.74, 0.46, 1)

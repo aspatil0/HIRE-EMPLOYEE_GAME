@@ -1,0 +1,11 @@
+{
+	"id": "call_aditya_day1",
+	"lines": [
+		{ "speaker": "ADITYA (PHONE)", "text": "You're at your desk. Good." },
+		{ "speaker": "ALICE", "text": "I just sat down. The resumes are here." },
+		{ "speaker": "ADITYA (PHONE)", "text": "Read each one carefully. Then use the second terminal. Look them up. People leave traces." },
+		{ "speaker": "ADITYA (PHONE)", "text": "Their identity papers are in the tray. Aadhaar, PAN, passports. Compare everything." },
+		{ "speaker": "ALICE", "text": "And if something doesn't match?" },
+		{ "speaker": "ADITYA (PHONE)", "text": "Then you'll have found exactly what I hired you to find. Goodnight, Alice.", "set_flag": "call_day1_done" }
+	]
+}

@@ -1,0 +1,7 @@
+{
+	"id": "office_arrival",
+	"lines": [
+		{ "speaker": "", "text": "Floor 13. Everyone else went home hours ago." },
+		{ "speaker": "ALICE", "text": "Six strangers asking to be trusted. Let's see who they really are.", "set_flag": "arrival_seen" }
+	]
+}

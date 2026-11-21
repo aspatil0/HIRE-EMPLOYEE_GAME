@@ -1,0 +1,209 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scenes/ui/hud.gd" id="1_hud"]
+
+[sub_resource type="Gradient" id="Gradient_top"]
+offsets = PackedFloat32Array(0, 1)
+colors = PackedColorArray(0, 0, 0.01, 0.78, 0, 0, 0.01, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_top"]
+gradient = SubResource("Gradient_top")
+width = 16
+height = 128
+fill_to = Vector2(0, 1)
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_hud")
+
+[node name="TopShade" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 150.0
+grow_horizontal = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_top")
+expand_mode = 1
+
+[node name="Left" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 30.0
+offset_right = 900.0
+offset_bottom = 120.0
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="Clock" type="HBoxContainer" parent="Left"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 18
+
+[node name="Day" type="Label" parent="Left/Clock"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+theme_type_variation = &"HeaderLabel"
+theme_override_font_sizes/font_size = 26
+text = "DAY 1"
+
+[node name="Sep" type="ColorRect" parent="Left/Clock"]
+custom_minimum_size = Vector2(1, 26)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+color = Color(1, 1, 1, 0.25)
+
+[node name="Time" type="Label" parent="Left/Clock"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+theme_type_variation = &"MonoLabel"
+theme_override_colors/font_color = Color(0.95, 0.74, 0.46, 1)
+theme_override_font_sizes/font_size = 28
+text = "21:00"
+
+[node name="Objective" type="Label" parent="Left"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"DimLabel"
+theme_override_colors/font_color = Color(0.75, 0.73, 0.7, 1)
+theme_override_font_sizes/font_size = 17
+text = "◆  Objective"
+
+[node name="Right" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -860.0
+offset_top = 30.0
+offset_right = -48.0
+offset_bottom = 90.0
+grow_horizontal = 0
+mouse_filter = 2
+alignment = 2
+theme_override_constants/separation = 24
+
+[node name="Stats" type="VBoxContainer" parent="Right"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="Candidates" type="Label" parent="Right/Stats"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"DimLabel"
+theme_override_colors/font_color = Color(0.78, 0.76, 0.72, 1)
+theme_override_font_sizes/font_size = 16
+text = "CANDIDATES   0 PENDING"
+horizontal_alignment = 2
+
+[node name="StatusRow" type="HBoxContainer" parent="Right/Stats"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 2
+theme_override_constants/separation = 10
+
+[node name="StatusDot" type="ColorRect" parent="Right/Stats/StatusRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(9, 9)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+color = Color(0.45, 0.75, 0.5, 1)
+
+[node name="Status" type="Label" parent="Right/Stats/StatusRow"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"DimLabel"
+theme_override_colors/font_color = Color(0.78, 0.76, 0.72, 1)
+theme_override_font_sizes/font_size = 16
+text = "COMPANY   STABLE"
+
+[node name="PauseButton" type="Button" parent="Right"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+size_flags_vertical = 4
+tooltip_text = "Pause (Esc)"
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 18
+text = "❚❚"
+
+[node name="Hint" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -600.0
+offset_top = -64.0
+offset_right = 600.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_type_variation = &"DimLabel"
+theme_override_colors/font_color = Color(0.8, 0.78, 0.74, 1)
+theme_override_font_sizes/font_size = 16
+text = "LEFT-CLICK  use        RIGHT-CLICK  inspect        ESC  pause"
+horizontal_alignment = 1
+
+[node name="LocationCard" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -600.0
+offset_top = 190.0
+offset_right = 600.0
+offset_bottom = 300.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="CardTitle" type="Label" parent="LocationCard"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"HeaderLabel"
+theme_override_font_sizes/font_size = 46
+text = "RECRUITMENT OFFICE"
+horizontal_alignment = 1
+
+[node name="CardSubtitle" type="Label" parent="LocationCard"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"DimLabel"
+theme_override_font_sizes/font_size = 17
+text = "FLOOR 13"
+horizontal_alignment = 1
+
+[node name="Toast" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -400.0
+offset_top = -120.0
+offset_right = 400.0
+offset_bottom = -88.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_type_variation = &"DimLabel"
+theme_override_colors/font_color = Color(0.95, 0.74, 0.46, 1)
+theme_override_font_sizes/font_size = 17
+text = "GAME SAVED"
+horizontal_alignment = 1

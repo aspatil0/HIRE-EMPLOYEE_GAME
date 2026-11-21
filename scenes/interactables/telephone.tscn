@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scenes/interactables/props/telephone_prop.gd" id="1_prop"]
+[ext_resource type="Script" path="res://scripts/components/interactable.gd" id="2_hit"]
+[ext_resource type="PackedScene" path="res://scenes/ui/panels/telephone_panel.tscn" id="3_panel"]
+
+[node name="Telephone" type="Node2D"]
+script = ExtResource("1_prop")
+
+[node name="Interactable" type="Area2D" parent="."]
+script = ExtResource("2_hit")
+interaction_id = &"telephone"
+display_name = "Telephone"
+action_verb = "Use"
+inspect_text = "Line 1 goes straight to the executive floor. Line 2 has been dead since I started."
+panel_scene = ExtResource("3_panel")
+
+[node name="Shape1" type="CollisionPolygon2D" parent="Interactable"]
+polygon = PackedVector2Array(-136, -92, 136, -92, 134, 92, -134, 92)

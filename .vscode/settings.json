@@ -1,0 +1,45 @@
+// {
+// 	"godotTools.editorPath.godot4": "C:\Users\Aditya\AppData\Local\Programs\Godot\Godot_v4.7.2-stable_win64.exe",
+// 	"godotTools.lsp.serverHost": "127.0.0.1",
+// 	"godotTools.lsp.serverPort": 6005,
+// 	"godotTools.lsp.headless": false,
+// 	"[gdscript]": {
+// 		"editor.insertSpaces": false,
+// 		"editor.tabSize": 4,
+// 		"editor.detectIndentation": false,
+// 		"editor.defaultFormatter": "geequlim.godot-tools"
+// 	},
+// 	"files.eol": "\n",
+// 	"files.insertFinalNewline": true,
+// 	"files.trimTrailingWhitespace": true,
+// 	"files.exclude": {
+// 		"**/.godot": true
+// 	},
+// 	"search.exclude": {
+// 		"**/.godot": true,
+// 		"**/*.import": true
+// 	}
+// }
+
+{
+    "godotTools.editorPath.godot4": "C:\\Users\\Aditya\\AppData\\Local\\Programs\\Godot\\Godot_v4.7.2-stable_win64.exe",
+    "godotTools.lsp.serverHost": "127.0.0.1",
+    "godotTools.lsp.serverPort": 6005,
+    "godotTools.lsp.headless": false,
+    "[gdscript]": {
+        "editor.insertSpaces": false,
+        "editor.tabSize": 4,
+        "editor.detectIndentation": false,
+        "editor.defaultFormatter": "geequlim.godot-tools"
+    },
+    "files.eol": "\n",
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "files.exclude": {
+        "**/.godot": true
+    },
+    "search.exclude": {
+        "**/.godot": true,
+        "**/*.import": true
+    }
+}

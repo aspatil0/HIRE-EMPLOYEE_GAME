@@ -1,0 +1,130 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scenes/ui/dialogue_box.gd" id="1_box"]
+
+[sub_resource type="Gradient" id="Gradient_shade"]
+offsets = PackedFloat32Array(0, 0.55, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0.01, 0.62, 0, 0, 0.01, 0.88)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_shade"]
+gradient = SubResource("Gradient_shade")
+width = 16
+height = 256
+fill_to = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_panel"]
+bg_color = Color(0.035, 0.038, 0.045, 0.9)
+border_width_top = 1
+border_color = Color(1, 1, 1, 0.08)
+shadow_color = Color(0, 0, 0, 0.5)
+shadow_size = 30
+
+[node name="DialogueBox" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_box")
+
+[node name="Shade" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -440.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_shade")
+expand_mode = 1
+
+[node name="Panel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -720.0
+offset_top = -290.0
+offset_right = 720.0
+offset_bottom = -56.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_panel")
+
+[node name="Margin" type="MarginContainer" parent="Panel"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 26
+theme_override_constants/margin_right = 48
+theme_override_constants/margin_bottom = 20
+
+[node name="VBox" type="VBoxContainer" parent="Panel/Margin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 14
+
+[node name="NameRow" type="HBoxContainer" parent="Panel/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 14
+
+[node name="Accent" type="ColorRect" parent="Panel/Margin/VBox/NameRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(4, 28)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.71, 0.16, 0.14, 1)
+
+[node name="Name" type="Label" parent="Panel/Margin/VBox/NameRow"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"HeaderLabel"
+theme_override_font_sizes/font_size = 26
+text = "ADITYA"
+
+[node name="Role" type="Label" parent="Panel/Margin/VBox/NameRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+theme_type_variation = &"DimLabel"
+theme_override_font_sizes/font_size = 15
+text = "CHIEF EXECUTIVE OFFICER"
+
+[node name="Text" type="Label" parent="Panel/Margin/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 104)
+layout_mode = 2
+theme_type_variation = &"SerifLabel"
+theme_override_font_sizes/font_size = 32
+text = "..."
+autowrap_mode = 3
+
+[node name="Footer" type="HBoxContainer" parent="Panel/Margin/VBox"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Hint" type="Label" parent="Panel/Margin/VBox/Footer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"DimLabel"
+theme_override_colors/font_color = Color(0.36, 0.38, 0.41, 1)
+theme_override_font_sizes/font_size = 14
+text = "CLICK  ·  SPACE  ·  ENTER"
+
+[node name="Continue" type="Label" parent="Panel/Margin/VBox/Footer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.74, 0.46, 1)
+theme_override_font_sizes/font_size = 20
+text = "▼"

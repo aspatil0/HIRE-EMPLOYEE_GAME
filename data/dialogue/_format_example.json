@@ -1,0 +1,7 @@
+{
+	"id": "format_example",
+	"lines": [
+		{ "speaker": "", "text": "Narration lines leave the speaker empty." },
+		{ "speaker": "HR", "text": "Welcome to your first night. Please sign here.", "set_flag": "met_hr" }
+	]
+}

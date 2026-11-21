@@ -1,0 +1,122 @@
+{
+	"day": 1,
+	"positions": ["Senior Accountant", "Systems Administrator", "Executive Assistant"],
+	"candidates": [
+		{
+			"id": "rohan_mehta",
+			"name": "Rohan Mehta",
+			"position": "Senior Accountant",
+			"age": 34,
+			"dob": "14-02-1992",
+			"city": "Pune",
+			"phone": "+91 98220 41736",
+			"email": "rohan.mehta@mailnet.in",
+			"education": "M.Com, Symbiosis College, 2013",
+			"experience_years": 9,
+			"previous_employer": "Kaveri Textiles Ltd. (2015 to 2024)",
+			"skills": ["Tally ERP", "GST filing", "Audit preparation", "Excel modelling"],
+			"summary": "Detail-oriented accountant with nine years managing ledgers for a mid-size textile exporter. Led the migration to digital invoicing.",
+			"documents": { "aadhaar": "XXXX XXXX 4821", "pan": "BKRPM4471K", "passport": "Z4419273" },
+			"online": [
+				{ "source": "ProLink profile", "title": "Rohan Mehta, Senior Accountant", "snippet": "Kaveri Textiles Ltd. 2015 to present. 312 connections." },
+				{ "source": "Pune Business Daily", "title": "Kaveri Textiles closes Hadapsar unit", "snippet": "The exporter shut operations in March 2021 after an internal audit..." }
+			]
+		},
+		{
+			"id": "priya_sharma",
+			"name": "Priya Sharma",
+			"position": "Executive Assistant",
+			"age": 27,
+			"dob": "03-09-1999",
+			"city": "New Delhi",
+			"phone": "+91 99104 22681",
+			"email": "priya.s.works@mailnet.in",
+			"education": "B.A. English, Miranda House, 2018",
+			"experience_years": 5,
+			"previous_employer": "Orion Consultancy (2019 to 2024)",
+			"skills": ["Calendar management", "Travel coordination", "Minutes and reporting", "French (B2)"],
+			"summary": "Executive assistant to two managing partners. Comfortable with confidential material and late hours.",
+			"documents": { "aadhaar": "XXXX XXXX 1093", "pan": "CQWPS8820L", "passport": "M2290418" },
+			"online": [
+				{ "source": "ProLink profile", "title": "Priya Sharma, Executive Assistant at Orion", "snippet": "Recommended by 4 colleagues." }
+			]
+		},
+		{
+			"id": "kabir_nair",
+			"name": "Kabir Nair",
+			"position": "Systems Administrator",
+			"age": 31,
+			"dob": "21-11-1995",
+			"city": "Kochi",
+			"phone": "+91 94470 63358",
+			"email": "kabir.nair@protonet.in",
+			"education": "B.Tech Computer Science, CUSAT, 2015",
+			"experience_years": 8,
+			"previous_employer": "Ashgrove Holdings (2016 to 2019)",
+			"skills": ["Linux servers", "Network security", "Backup and recovery", "Access control"],
+			"summary": "Infrastructure engineer. Hardened access systems for a corporate headquarters. Available to start immediately.",
+			"documents": { "aadhaar": "XXXX XXXX 7710", "pan": "DHLPN3012M", "passport": null },
+			"online": [
+				{ "source": "Search result", "title": "No public profile found", "snippet": "Results for 'Kabir Nair Ashgrove' returned no matching records." }
+			]
+		},
+		{
+			"id": "ananya_iyer",
+			"name": "Ananya Iyer",
+			"position": "Senior Accountant",
+			"age": 29,
+			"dob": "30-06-1997",
+			"city": "Chennai",
+			"phone": "+91 98410 77204",
+			"email": "ananya.iyer@mailnet.in",
+			"education": "CA (ICAI), 2019",
+			"experience_years": 6,
+			"previous_employer": "Sundaram & Rao Associates (2019 to 2025)",
+			"skills": ["Statutory audit", "Taxation", "IFRS", "SAP FICO"],
+			"summary": "Chartered accountant with audit experience across manufacturing and logistics clients.",
+			"documents": { "aadhaar": "XXXX XXXX 3356", "pan": "AJTPI6619Q", "passport": "T8830125" },
+			"online": [
+				{ "source": "ICAI member directory", "title": "Iyer, Ananya. Membership active", "snippet": "Chennai region. Member since 2019." },
+				{ "source": "ProLink profile", "title": "Ananya Iyer, CA", "snippet": "Audit Senior at Sundaram & Rao Associates." }
+			]
+		},
+		{
+			"id": "vikram_desai",
+			"name": "Vikram Desai",
+			"position": "Systems Administrator",
+			"age": 42,
+			"dob": "08-01-1984",
+			"city": "Ahmedabad",
+			"phone": "+91 97250 18843",
+			"email": "v.desai1983@mailnet.in",
+			"education": "Diploma in IT, Gujarat Technical Board, 2004",
+			"experience_years": 17,
+			"previous_employer": "Saffron Logistics (2008 to 2025)",
+			"skills": ["Windows Server", "Hardware maintenance", "CCTV systems", "Vendor management"],
+			"summary": "Seventeen years keeping a logistics firm's systems running around the clock. Night-shift experience.",
+			"documents": { "aadhaar": "XXXX XXXX 9042", "pan": "EVKPD2287A", "passport": "K1173390" },
+			"online": [
+				{ "source": "Ahmedabad Mirror", "title": "Warehouse fire at Saffron Logistics, no casualties", "snippet": "A server room fire in 2022 destroyed archived records..." }
+			]
+		},
+		{
+			"id": "meera_joshi",
+			"name": "Meera Joshi",
+			"position": "Executive Assistant",
+			"age": 24,
+			"dob": "17-04-2002",
+			"city": "Mumbai",
+			"phone": "+91 90040 55127",
+			"email": "meera.joshi.ea@mailnet.in",
+			"education": "BMS, Jai Hind College, 2022",
+			"experience_years": 2,
+			"previous_employer": "Lumen Events (2022 to 2024)",
+			"skills": ["Event planning", "Vendor coordination", "Social media", "Marathi, Hindi, English"],
+			"summary": "Organised and energetic. Looking to move from event management into a corporate executive office.",
+			"documents": { "aadhaar": "XXXX XXXX 6618", "pan": "FMJPJ7734C", "passport": "S5501876" },
+			"online": [
+				{ "source": "Photo-sharing profile", "title": "@meera.plans", "snippet": "Last post: 3 years ago. 'Starting somewhere new.'" }
+			]
+		}
+	]
+}

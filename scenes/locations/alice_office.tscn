@@ -1,0 +1,151 @@
+[gd_scene load_steps=25 format=3]
+
+[ext_resource type="Script" path="res://scenes/locations/alice_office.gd" id="1_office"]
+[ext_resource type="Script" path="res://scenes/locations/art/office_room.gd" id="2_room"]
+[ext_resource type="Script" path="res://scenes/locations/art/desk_surface.gd" id="3_desk"]
+[ext_resource type="PackedScene" path="res://scenes/environment/night_window.tscn" id="4_window"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/wall_clock.tscn" id="5_clock"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/corkboard.tscn" id="6_cork"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/side_computer.tscn" id="7_side"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/main_computer.tscn" id="8_main"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/document_tray.tscn" id="9_tray"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/resume_stack.tscn" id="10_resumes"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/desk_lamp.tscn" id="11_lamp"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/telephone.tscn" id="12_phone"]
+[ext_resource type="Script" path="res://scripts/components/interactable.gd" id="13_hit"]
+[ext_resource type="Script" path="res://scripts/components/lighting_rig.gd" id="14_rig"]
+[ext_resource type="Script" path="res://scripts/components/interaction_controller.gd" id="15_ctrl"]
+[ext_resource type="Script" path="res://scripts/components/shift_clock.gd" id="16_clock"]
+[ext_resource type="Script" path="res://scripts/components/phone_line.gd" id="17_line"]
+[ext_resource type="PackedScene" path="res://scenes/ui/screen_effects.tscn" id="18_fx"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="19_hud"]
+[ext_resource type="Script" path="res://scenes/ui/panel_host.gd" id="20_host"]
+[ext_resource type="PackedScene" path="res://scenes/ui/dialogue_box.tscn" id="21_dialogue"]
+[ext_resource type="PackedScene" path="res://scenes/ui/interaction_tooltip.tscn" id="22_tip"]
+[ext_resource type="PackedScene" path="res://scenes/ui/pause_menu.tscn" id="23_pause"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_add"]
+blend_mode = 1
+
+[node name="AliceOffice" type="Node2D" groups=["saveable_location"]]
+script = ExtResource("1_office")
+
+[node name="Environment" type="Node2D" parent="."]
+
+[node name="Room" type="Node2D" parent="Environment"]
+script = ExtResource("2_room")
+
+[node name="DoorHotspot" type="Area2D" parent="Environment/Room"]
+script = ExtResource("13_hit")
+interaction_id = &"door"
+display_name = "Office Door"
+action_verb = "Look"
+inspect_text = "The corridor light is still on. I locked this door when I came in. I'm almost sure I did."
+activate_inspects = true
+brighten = false
+
+[node name="Shape1" type="CollisionPolygon2D" parent="Environment/Room/DoorHotspot"]
+polygon = PackedVector2Array(1694, 44, 1920, 52, 1920, 600, 1694, 600)
+
+[node name="ShelfHotspot" type="Area2D" parent="Environment/Room"]
+script = ExtResource("13_hit")
+interaction_id = &"bookshelf"
+display_name = "Bookshelf"
+action_verb = "Look"
+inspect_text = "Binders of past hires, filed by year. One year is missing from the shelf. The gap is exactly one binder wide."
+activate_inspects = true
+brighten = false
+
+[node name="Shape1" type="CollisionPolygon2D" parent="Environment/Room/ShelfHotspot"]
+polygon = PackedVector2Array(36, 104, 426, 104, 426, 330, 36, 330)
+
+[node name="NightWindow" parent="Environment" instance=ExtResource("4_window")]
+position = Vector2(580, 82)
+size = Vector2(660, 400)
+mullions_x = 1
+blinds = 0.2
+rain_count = 170
+
+[node name="Interactable" type="Area2D" parent="Environment/NightWindow"]
+script = ExtResource("13_hit")
+interaction_id = &"window"
+display_name = "Window"
+action_verb = "Look"
+inspect_text = "Rain again. Thirteen floors down, the city keeps its lights on. Somebody over there is still awake too."
+activate_inspects = true
+highlight_color = Color(1.15, 1.15, 1.2, 1)
+
+[node name="Shape1" type="CollisionPolygon2D" parent="Environment/NightWindow/Interactable"]
+polygon = PackedVector2Array(-18, -18, 678, -18, 678, 418, -18, 418)
+
+[node name="WallClock" parent="Environment" instance=ExtResource("5_clock")]
+position = Vector2(1475, 150)
+
+[node name="Corkboard" parent="Environment" instance=ExtResource("6_cork")]
+position = Vector2(1475, 392)
+
+[node name="Desk" type="Node2D" parent="Environment"]
+script = ExtResource("3_desk")
+
+[node name="SideComputer" parent="Environment" instance=ExtResource("7_side")]
+position = Vector2(300, 455)
+
+[node name="MainComputer" parent="Environment" instance=ExtResource("8_main")]
+position = Vector2(960, 455)
+
+[node name="DocumentTray" parent="Environment" instance=ExtResource("9_tray")]
+position = Vector2(330, 852)
+
+[node name="ResumeStack" parent="Environment" instance=ExtResource("10_resumes")]
+position = Vector2(1420, 770)
+
+[node name="DeskLamp" parent="Environment" instance=ExtResource("11_lamp")]
+position = Vector2(1680, 652)
+
+[node name="Telephone" parent="Environment" instance=ExtResource("12_phone")]
+position = Vector2(1745, 880)
+
+[node name="LightingRig" type="ColorRect" parent="."]
+z_index = 50
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+script = ExtResource("14_rig")
+ambient = Color(0.12, 0.135, 0.18, 1)
+
+[node name="Glow" type="Node2D" parent="."]
+z_index = 70
+material = SubResource("CanvasItemMaterial_add")
+
+[node name="Interaction" type="Node2D" parent="."]
+script = ExtResource("15_ctrl")
+panel_host_path = NodePath("../UI/PanelHost")
+
+[node name="ShiftClock" type="Node" parent="."]
+script = ExtResource("16_clock")
+
+[node name="PhoneLine" type="Node" parent="."]
+script = ExtResource("17_line")
+
+[node name="ScreenEffects" parent="." instance=ExtResource("18_fx")]
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="HUD" parent="UI" instance=ExtResource("19_hud")]
+
+[node name="PanelHost" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("20_host")
+
+[node name="DialogueBox" parent="UI" instance=ExtResource("21_dialogue")]
+
+[node name="InteractionTooltip" parent="UI" instance=ExtResource("22_tip")]
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("23_pause")]

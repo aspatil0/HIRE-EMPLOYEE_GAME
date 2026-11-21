@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scenes/interactables/props/corkboard_prop.gd" id="1_prop"]
+[ext_resource type="Script" path="res://scripts/components/interactable.gd" id="2_hit"]
+
+[node name="Corkboard" type="Node2D"]
+script = ExtResource("1_prop")
+
+[node name="Interactable" type="Area2D" parent="."]
+script = ExtResource("2_hit")
+interaction_id = &"corkboard"
+display_name = "Corkboard"
+action_verb = "Look"
+inspect_text = "My predecessor's board. Twenty days crossed off, then nothing. The red string stops halfway."
+activate_inspects = true
+
+[node name="Shape1" type="CollisionPolygon2D" parent="Interactable"]
+polygon = PackedVector2Array(-180, -128, 180, -128, 180, 128, -180, 128)

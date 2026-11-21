@@ -1,0 +1,13 @@
+{
+	"id": "intro_assignment",
+	"lines": [
+		{ "speaker": "ADITYA", "text": "Alice, we have an important recruitment requirement.", "cue": "lamp_steady" },
+		{ "speaker": "ADITYA", "text": "Three positions. Six applications arrived today, and more will come.", "cue": "slide_folder" },
+		{ "speaker": "ADITYA", "text": "I need you to select the right people. Every decision matters." },
+		{ "speaker": "ALICE", "text": "Background checks usually take a few days. Is there a deadline?", "cue": "focus_alice" },
+		{ "speaker": "ADITYA", "text": "Tonight is the deadline. Their documents, their histories, their faces. Check all of it.", "cue": "focus_aditya" },
+		{ "speaker": "ADITYA", "text": "Your job isn't just to hire people. Your job is to protect this company.", "cue": "lean_in" },
+		{ "speaker": "ALICE", "text": "Understood. I'll verify every candidate before making a decision.", "cue": "focus_alice" },
+		{ "speaker": "ADITYA", "text": "Good. Don't disappoint me.", "cue": "glint", "set_flag": "intro_seen" }
+	]
+}

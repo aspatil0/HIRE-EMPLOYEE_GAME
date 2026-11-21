@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scenes/ui/interaction_tooltip.gd" id="1_tip"]
+
+[node name="InteractionTooltip" type="PanelContainer"]
+offset_right = 220.0
+offset_bottom = 70.0
+mouse_filter = 2
+script = ExtResource("1_tip")

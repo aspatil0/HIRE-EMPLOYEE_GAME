@@ -1,0 +1,202 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scenes/ui/main_menu.gd" id="1_menu"]
+[ext_resource type="PackedScene" path="res://scenes/environment/night_window.tscn" id="2_window"]
+[ext_resource type="Script" path="res://scenes/ui/menu_foreground.gd" id="3_fg"]
+[ext_resource type="Script" path="res://scripts/components/lighting_rig.gd" id="4_rig"]
+[ext_resource type="PackedScene" path="res://scenes/ui/screen_effects.tscn" id="5_fx"]
+[ext_resource type="Script" path="res://scenes/ui/menu_button_fx.gd" id="6_btn"]
+
+[sub_resource type="Gradient" id="Gradient_left"]
+offsets = PackedFloat32Array(0, 0.45, 1)
+colors = PackedColorArray(0, 0, 0.01, 0.92, 0, 0, 0.01, 0.7, 0, 0, 0.01, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_left"]
+gradient = SubResource("Gradient_left")
+width = 256
+height = 16
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_menu")
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="NightWindow" parent="World" instance=ExtResource("2_window")]
+position = Vector2(-30, -30)
+size = Vector2(1980, 960)
+frame_width = 30.0
+mullions_x = 3
+mullions_y = 1
+blinds = 0.12
+rain_count = 340
+seed_value = 3
+lightning_interval = Vector2(12, 28)
+skyline_scale = 1.6
+draw_sill = false
+
+[node name="Foreground" type="Node2D" parent="World"]
+script = ExtResource("3_fg")
+
+[node name="LightingRig" type="ColorRect" parent="World"]
+z_index = 50
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+script = ExtResource("4_rig")
+ambient = Color(0.1, 0.11, 0.15, 1)
+
+[node name="ScreenEffects" parent="." instance=ExtResource("5_fx")]
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="Root" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="LeftShade" type="TextureRect" parent="UI/Root"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 1400.0
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_left")
+expand_mode = 1
+
+[node name="Content" type="VBoxContainer" parent="UI/Root"]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 220.0
+offset_right = 1400.0
+offset_bottom = 900.0
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="Kicker" type="Label" parent="UI/Root/Content"]
+layout_mode = 2
+theme_type_variation = &"DimLabel"
+theme_override_colors/font_color = Color(0.71, 0.16, 0.14, 1)
+theme_override_font_sizes/font_size = 16
+text = "ASHGROVE HOLDINGS  ·  HUMAN RESOURCES"
+
+[node name="TitleRow" type="HBoxContainer" parent="UI/Root/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="Rule" type="ColorRect" parent="UI/Root/Content"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+color = Color(0.71, 0.16, 0.14, 1)
+
+[node name="Tagline" type="Label" parent="UI/Root/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"SerifLabel"
+theme_override_colors/font_color = Color(0.62, 0.6, 0.58, 1)
+theme_override_font_sizes/font_size = 26
+text = "Every decision matters. Some of them are permanent."
+
+[node name="Gap" type="Control" parent="UI/Root/Content"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Buttons" type="VBoxContainer" parent="UI/Root/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="NewGame" type="Button" parent="UI/Root/Content/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_type_variation = &"MenuTextButton"
+text = "NEW GAME"
+alignment = 0
+script = ExtResource("6_btn")
+
+[node name="Continue" type="Button" parent="UI/Root/Content/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_type_variation = &"MenuTextButton"
+text = "CONTINUE"
+alignment = 0
+script = ExtResource("6_btn")
+
+[node name="Settings" type="Button" parent="UI/Root/Content/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_type_variation = &"MenuTextButton"
+text = "SETTINGS"
+alignment = 0
+script = ExtResource("6_btn")
+
+[node name="Exit" type="Button" parent="UI/Root/Content/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_type_variation = &"MenuTextButton"
+text = "EXIT"
+alignment = 0
+script = ExtResource("6_btn")
+
+[node name="Footer" type="HBoxContainer" parent="UI/Root"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 140.0
+offset_top = -76.0
+offset_right = -80.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="Version" type="Label" parent="UI/Root/Footer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"DimLabel"
+theme_override_colors/font_color = Color(0.4, 0.41, 0.43, 1)
+theme_override_font_sizes/font_size = 14
+text = "v0.1.0  ·  PHASE 1 BUILD"
+
+[node name="Headphones" type="Label" parent="UI/Root/Footer"]
+layout_mode = 2
+theme_type_variation = &"DimLabel"
+theme_override_colors/font_color = Color(0.4, 0.41, 0.43, 1)
+theme_override_font_sizes/font_size = 14
+text = "BEST EXPERIENCED WITH HEADPHONES  ·  F11 FULLSCREEN"
+
+[node name="Toast" type="Label" parent="UI/Root"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 140.0
+offset_top = 940.0
+offset_right = 1000.0
+offset_bottom = 970.0
+theme_type_variation = &"DimLabel"
+theme_override_colors/font_color = Color(0.95, 0.5, 0.45, 1)

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scenes/interactables/props/desk_lamp_prop.gd" id="1_prop"]
+[ext_resource type="Script" path="res://scripts/components/interactable.gd" id="2_hit"]
+
+[node name="DeskLamp" type="Node2D"]
+script = ExtResource("1_prop")
+
+[node name="Interactable" type="Area2D" parent="."]
+script = ExtResource("2_hit")
+interaction_id = &"desk_lamp"
+display_name = "Desk Lamp"
+action_verb = "Switch"
+inspect_text = "The only warm light on the whole floor. I'd rather not find out what this room looks like without it."
+
+[node name="Shape1" type="CollisionPolygon2D" parent="Interactable"]
+polygon = PackedVector2Array(-212, -196, -110, -286, -60, -274, 52, -216, 46, -30, 80, -6, 76, 26, -80, 26, -76, -8, -22, -30, -62, -124)

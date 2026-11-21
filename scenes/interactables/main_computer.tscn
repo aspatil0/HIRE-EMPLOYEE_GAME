@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scenes/interactables/props/main_computer_prop.gd" id="1_prop"]
+[ext_resource type="Script" path="res://scripts/components/interactable.gd" id="2_hit"]
+[ext_resource type="PackedScene" path="res://scenes/ui/panels/computer_panel.tscn" id="3_panel"]
+
+[node name="MainComputer" type="Node2D"]
+script = ExtResource("1_prop")
+
+[node name="Interactable" type="Area2D" parent="."]
+script = ExtResource("2_hit")
+interaction_id = &"main_computer"
+display_name = "Main Computer"
+action_verb = "Log in"
+inspect_text = "Ashgrove's recruitment system. Every keystroke on this terminal is logged. Somebody reads those logs."
+panel_scene = ExtResource("3_panel")
+
+[node name="Shape1" type="CollisionPolygon2D" parent="Interactable"]
+polygon = PackedVector2Array(-262, -178, 262, -178, 262, 168, 130, 252, -130, 252, -262, 168)
+
+[node name="Shape2" type="CollisionPolygon2D" parent="Interactable"]
+polygon = PackedVector2Array(-232, 330, 232, 330, 305, 350, 310, 432, -252, 432)

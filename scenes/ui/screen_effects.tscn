@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/film_grain.gdshader" id="1_grain"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_grain"]
+shader = ExtResource("1_grain")
+shader_parameter/canvas_size = Vector2(1920, 1080)
+shader_parameter/grain_amount = 0.07
+shader_parameter/vignette_strength = 0.62
+shader_parameter/vignette_inner = 0.38
+shader_parameter/flicker = 0.025
+shader_parameter/grain_fps = 24.0
+
+[node name="ScreenEffects" type="CanvasLayer"]
+layer = 5
+
+[node name="Grain" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_grain")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
