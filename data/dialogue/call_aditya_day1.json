@@ -6,6 +6,7 @@
 		{ "speaker": "ADITYA (PHONE)", "text": "Read each one carefully. Then use the second terminal. Look them up. People leave traces." },
 		{ "speaker": "ADITYA (PHONE)", "text": "Their identity papers are in the tray. Aadhaar, PAN, passports. Compare everything." },
 		{ "speaker": "ALICE", "text": "And if something doesn't match?" },
-		{ "speaker": "ADITYA (PHONE)", "text": "Then you'll have found exactly what I hired you to find. Goodnight, Alice.", "set_flag": "call_day1_done" }
+		{ "speaker": "ADITYA (PHONE)", "text": "A mismatch is a question, not an answer. Find out why. Then accept them or reject them. Every decision goes through my office." },
+		{ "speaker": "ADITYA (PHONE)", "text": "Find what doesn't fit, and you'll have found exactly what I hired you to find. Goodnight, Alice.", "set_flag": "call_day1_done" }
 	]
 }

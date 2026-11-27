@@ -14,7 +14,7 @@ signal time_changed(minutes: int)
 signal stats_changed
 signal objective_changed(text: String)
 
-const SAVE_FORMAT_VERSION := 2
+const SAVE_FORMAT_VERSION := 3 # v3: Phase 2 recruitment block
 const START_TIME_MINUTES := 21 * 60 # shifts start at 21:00
 const START_FUNDS := 4_800_000
 const START_REPUTATION := 72
@@ -33,6 +33,9 @@ var hires: int = 0
 var hire_target: int = 3
 var company_funds: int = START_FUNDS
 var company_reputation: int = START_REPUTATION
+## Phase 2 investigation state (clues, logs, calls, decisions, CEO tokens).
+## Owned by GameState for saving; read and modified through the Recruitment autoload.
+var recruitment: Dictionary = {}
 
 
 func reset() -> void:
@@ -48,6 +51,7 @@ func reset() -> void:
 	hire_target = 3
 	company_funds = START_FUNDS
 	company_reputation = START_REPUTATION
+	recruitment = {}
 	state_reset.emit()
 
 
@@ -151,6 +155,7 @@ func to_dict() -> Dictionary:
 		"hire_target": hire_target,
 		"company_funds": company_funds,
 		"company_reputation": company_reputation,
+		"recruitment": recruitment.duplicate(true),
 	}
 
 
@@ -174,6 +179,8 @@ func from_dict(data: Dictionary) -> void:
 	hire_target = int(data.get("hire_target", 3))
 	company_funds = int(data.get("company_funds", START_FUNDS))
 	company_reputation = int(data.get("company_reputation", START_REPUTATION))
+	var rec: Variant = data.get("recruitment", {}) # absent in v1/v2 saves
+	recruitment = (rec as Dictionary).duplicate(true) if rec is Dictionary else {}
 	time_changed.emit(time_minutes)
 	stats_changed.emit()
 	objective_changed.emit(objective)

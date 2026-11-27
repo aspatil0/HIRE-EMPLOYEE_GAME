@@ -1,28 +1,137 @@
 {
 	"company": "Ashgrove Holdings",
+	"notes": "Inbox entries may have: candidate + clue (logged when read), requires (clue id that must be discovered before the email appears). anon_emails arrive after N final decisions (after_decisions) and offer replies; action 'share' sends Alice's accepted names.",
 	"inbox": [
 		{
+			"id": "m_aditya",
 			"from": "Aditya, Office of the CEO",
 			"subject": "Tonight's requirement",
 			"time": "19:58",
-			"body": "Alice,\n\nThree positions must be filled: Senior Accountant, Systems Administrator, Executive Assistant.\n\nThe board will not tolerate another mistake like last quarter. Verify every document. Every reference. Every face.\n\nAditya"
+			"body": "Alice,\n\nSix applications. Three positions: Senior Accountant, Systems Administrator, Executive Assistant.\n\nThe board will not tolerate another mistake like last quarter. Verify every document. Every reference. Every face.\n\nACCEPT, REJECT, or keep investigating. But decide.\n\nAditya"
 		},
 		{
+			"id": "m_screen",
+			"from": "HR Screening Desk",
+			"subject": "Phone screen notes — tonight's applicants",
+			"time": "18:40",
+			"body": "Summary of first-round phone screens:\n\n• Arjun Malhotra — technical depth 9.5/10. Highest this cycle.\n• Karan Oberoi — outstanding communicator. Asked several detailed questions about the CEO's travel and board calendar.\n• Ravi Shetty — quiet, practical, undersold himself.\n• Ira Mehra — could not be reached; number routes internally (?). Flagged for IT.\n\nNo screens for the other applicants.",
+			"clues": [
+				[
+					"c02",
+					"c02_interview"
+				],
+				[
+					"c05",
+					"c05_interview"
+				]
+			]
+		},
+		{
+			"id": "m_it",
 			"from": "IT Security",
 			"subject": "Reminder: identity verification policy",
 			"time": "17:30",
-			"body": "All new hires must present Aadhaar, PAN and, where applicable, a passport. Cross-check names, dates of birth and photographs before issuing access cards.\n\nRecruitment terminals are logged."
+			"body": "All new hires must present an Aadhaar-style ID, a PAN card and, where applicable, a passport. Cross-check names, dates of birth and addresses before issuing access cards.\n\nRecruitment terminals are logged."
 		},
 		{
+			"id": "m_karan",
+			"from": "Karan Oberoi",
+			"subject": "A quick question before Monday",
+			"time": "01:42",
+			"body": "Dear Recruitment,\n\nThank you for considering me. To prepare in advance, could you share the CEO's usual weekly schedule — board days, travel, the times he is typically alone in the office?\n\nI find it helps to know these things early.\n\nWarm regards,\nKaran",
+			"candidate": "c05",
+			"clue": "c05_late_email"
+		},
+		{
+			"id": "m_careernest",
+			"from": "CareerNest Placements",
+			"subject": "CORRECTION: resume of Mr. Sham Mathur (CN-56)",
+			"time": "21:07",
+			"body": "Dear Ashgrove Recruitment,\n\nDue to a template error, the age field on the resume we submitted for Mr. Sham Mathur displayed our internal file code (56) instead of his age.\n\nCorrected value: Age 40 (DOB 29-08-1986). All other details are unchanged.\n\nWe apologise for the confusion.\n\nCareerNest Placements, Pune",
+			"candidate": "c01",
+			"clue": "c01_agency_error",
+			"requires": "c01_age_mismatch"
+		},
+		{
+			"id": "m_anon",
 			"from": "(no sender)",
 			"subject": "you were not the first",
 			"time": "03:13",
-			"body": "check the old files\n\ncheck who signed them"
+			"body": "check the old files\n\ncheck who signed them\n\n---\nmessage header: sent from TERMINAL 13-A",
+			"candidate": "c06",
+			"clue": "c06_anonymous_email"
 		}
 	],
 	"open_positions": [
-		{ "title": "Senior Accountant", "department": "Finance", "salary": "18,00,000 / yr" },
-		{ "title": "Systems Administrator", "department": "IT Infrastructure", "salary": "15,00,000 / yr" },
-		{ "title": "Executive Assistant", "department": "Office of the CEO", "salary": "9,00,000 / yr" }
+		{
+			"title": "Senior Accountant",
+			"department": "Finance",
+			"salary": "18,00,000 / yr"
+		},
+		{
+			"title": "Systems Administrator",
+			"department": "IT Infrastructure",
+			"salary": "15,00,000 / yr"
+		},
+		{
+			"title": "Executive Assistant",
+			"department": "Office of the CEO",
+			"salary": "9,00,000 / yr"
+		}
+	],
+	"anon_emails": [
+		{
+			"id": "anon_1",
+			"after_decisions": 1,
+			"from": "(unknown sender)",
+			"subject": "don't do this",
+			"body": "Alice,\n\nDon't do this. Whatever he told you about these files — don't.\n\nYou will get into trouble. I know, because I did exactly what you are doing.",
+			"replies": [
+				{
+					"id": "who",
+					"text": "Who is this?"
+				},
+				{
+					"id": "stop",
+					"text": "Stop emailing me. I'm doing my job."
+				}
+			]
+		},
+		{
+			"id": "anon_2",
+			"after_decisions": 2,
+			"from": "(unknown sender)",
+			"subject": "please listen to me",
+			"body": "Alice, please.\n\nI already did it. Every file, every check, every name, just like you tonight.\n\nHe will make trouble for you. He made trouble for me.",
+			"replies": [
+				{
+					"id": "what",
+					"text": "What happened to you?"
+				},
+				{
+					"id": "handle",
+					"text": "I can handle Aditya."
+				}
+			]
+		},
+		{
+			"id": "anon_3",
+			"after_decisions": 4,
+			"from": "(unknown sender)",
+			"subject": "the only way",
+			"body": "Alice, please share with me whom you hired.\n\nJust the names. Nothing else.\n\nIt is the only way I can save you.",
+			"replies": [
+				{
+					"id": "share",
+					"text": "SEND THE NAMES",
+					"action": "share"
+				},
+				{
+					"id": "ignore",
+					"text": "IGNORE THIS MESSAGE",
+					"action": "ignore"
+				}
+			]
+		}
 	]
 }

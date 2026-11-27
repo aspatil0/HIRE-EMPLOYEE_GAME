@@ -94,6 +94,13 @@ func save_game() -> bool:
 	return true
 
 
+## Removes the save (Alice was fired: this run is over).
+func delete_save() -> void:
+	if not saving_enabled or not has_save():
+		return
+	DirAccess.remove_absolute(ProjectSettings.globalize_path(SAVE_PATH))
+
+
 func load_game() -> bool:
 	if not has_save():
 		return false

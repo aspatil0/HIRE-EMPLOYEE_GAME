@@ -2,9 +2,8 @@ class_name UITheme
 extends RefCounted
 ## Builds the game's UI Theme in code and exposes the shared fonts/colours.
 ##
-## Fonts are SystemFonts (Georgia / Segoe UI / Consolas on Windows) with fallbacks,
-## so no font files are needed yet. Drop .ttf/.otf files into assets/fonts/ and
-## point _font() at them to switch to bundled typography.
+## Fonts are bundled OFL files in assets/fonts/ (Gelasio / Open Sans / Inconsolata,
+## with Noto Sans Symbols 2 as a glyph fallback) so web and Android builds render text.
 ##
 ## Type variations available to Labels/Buttons via theme_type_variation:
 ##   TitleLabel, HeaderLabel, SerifLabel, DimLabel, MonoLabel, MenuTextButton, FlatButton, PaperLabel
@@ -26,37 +25,53 @@ static var _fonts: Dictionary[StringName, Font] = {}
 
 
 static func serif() -> Font:
-	return _font(&"serif", ["Georgia", "Cambria", "Times New Roman", "serif"], 0)
+	return _font(&"serif", SERIF_FILE, 0)
 
 
 static func serif_spaced() -> Font:
-	return _font(&"serif_spaced", ["Georgia", "Cambria", "Times New Roman", "serif"], 6)
+	return _font(&"serif_spaced", SERIF_FILE, 6)
 
 
 static func sans() -> Font:
-	return _font(&"sans", ["Segoe UI", "Helvetica Neue", "Arial", "sans-serif"], 0)
+	return _font(&"sans", SANS_FILE, 0)
 
 
 static func sans_spaced() -> Font:
-	return _font(&"sans_spaced", ["Segoe UI Semibold", "Segoe UI", "Arial", "sans-serif"], 3)
+	return _font(&"sans_spaced", SANS_FILE, 3, 600)
 
 
 static func mono() -> Font:
-	return _font(&"mono", ["Consolas", "Cascadia Mono", "Courier New", "monospace"], 0)
+	return _font(&"mono", MONO_FILE, 0)
 
 
-static func _font(key: StringName, names: Array, spacing: int) -> Font:
+# Bundled OFL fonts (licences alongside in assets/fonts/). Web and mobile exports
+# cannot rely on system fonts, so everything ships with the game.
+const SERIF_FILE := "res://assets/fonts/Gelasio.ttf" # metric-compatible with Georgia
+const SANS_FILE := "res://assets/fonts/OpenSans.ttf"
+const MONO_FILE := "res://assets/fonts/Inconsolata.ttf"
+# Fallbacks cover UI symbols (▶ ◀ ■ ● ✕ ❚ …) plus ₹ and → for every face.
+const FALLBACK_FILES := ["res://assets/fonts/NotoSansSymbols2.ttf", SERIF_FILE]
+
+
+static func _font(key: StringName, path: String, spacing: int, weight: int = 0) -> Font:
 	if _fonts.has(key):
 		return _fonts[key]
-	var sys := SystemFont.new()
-	sys.font_names = PackedStringArray(names)
-	sys.antialiasing = TextServer.FONT_ANTIALIASING_GRAY
-	sys.hinting = TextServer.HINTING_LIGHT
-	var font: Font = sys
-	if spacing != 0:
+	var base := load(path) as FontFile
+	base.antialiasing = TextServer.FONT_ANTIALIASING_GRAY
+	base.hinting = TextServer.HINTING_LIGHT
+	var fallbacks: Array[Font] = []
+	for f: String in FALLBACK_FILES:
+		if f != path:
+			fallbacks.append(load(f) as Font)
+	base.fallbacks = fallbacks
+	var font: Font = base
+	if spacing != 0 or weight != 0:
 		var v := FontVariation.new()
-		v.base_font = sys
+		v.base_font = base
 		v.spacing_glyph = spacing
+		if weight != 0:
+			var wght := TextServerManager.get_primary_interface().name_to_tag("wght")
+			v.variation_opentype = {wght: weight}
 		font = v
 	_fonts[key] = font
 	return font

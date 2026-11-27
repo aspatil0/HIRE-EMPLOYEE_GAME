@@ -1,0 +1,76 @@
+{
+	"id": "c03",
+	"index": 3,
+	"resume": {
+		"name": "Ravi Shetty",
+		"claimed_age": 38,
+		"dob": "02-07-1988",
+		"gender": "Male",
+		"address": "Door 7-112, Bejai Main Road",
+		"city": "Mangaluru",
+		"phone": "+91 98765 30303",
+		"email": "ravishetty88@mailnet.in",
+		"position": "Systems Administrator",
+		"education": {
+			"qualification": "Diploma in Electronics & Communication",
+			"institution": "Karavali Polytechnic, Mangaluru",
+			"year": "2007",
+			"score": "61%",
+			"certifications": ["CompTIA A+ (2012)", "Linux Foundation LFCS (2021)"]
+		},
+		"experience": [
+			{ "company": "Coastal Care Hospitals", "designation": "IT Systems Supervisor", "joined": "01-2015", "left": "10-2026", "salary": "₹7.8 LPA", "reason": "Hospital acquired by a national chain; IT moved to head office." },
+			{ "company": "Shetty Computer Services", "designation": "Hardware & Network Technician", "joined": "06-2007", "left": "12-2014", "salary": "—", "reason": "Family business; joined the hospital full time." }
+		],
+		"total_experience": "19 years",
+		"skills": ["Windows & Linux servers", "Hospital network uptime", "Backups that actually restore", "Printers (unfortunately)", "Staff training"],
+		"achievements": ["Kept a 300-bed hospital's systems running during a 2023 incident.", "Trained 140 nurses and clerks on the new records system."],
+		"references": [
+			{ "name": "HR Office, Coastal Care Hospitals", "relation": "Most recent employer", "contact": "ref_c03_coastal" },
+			{ "name": "Dr. Anitha Rao", "relation": "Former Medical Director, Coastal Care", "contact": "ref_c03_rao" }
+		],
+		"expected_salary": "₹9 LPA",
+		"notice_period": "Immediate",
+		"statement": "I don't have a big degree. I have nineteen years of fixing things at 3 a.m. so that other people never notice anything broke.",
+		"footer": ""
+	},
+	"documents": {
+		"aadhaar": { "name": "Ravi S. Shetty", "dob": "02-07-1988", "gender": "Male", "address": "Door 7-112, Bejai Main Road, Mangaluru 575004", "city": "Mangaluru", "number": "XXXX XXXX 0383", "issued": "2017" },
+		"pan": { "name": "Ravi Sadashiva Shetty", "dob": "02-07-1988", "number": "FICPS0383R" },
+		"passport": null,
+		"employment": { "issuer": "Coastal Care Hospitals", "kind": "Experience certificate", "company": "Coastal Care Hospitals", "designation": "IT Systems Supervisor", "joined": "01-2015", "left": "10-2026", "signed_by": "M. Kamath, HR Manager" },
+		"education": { "issuer": "Board of Technical Education", "kind": "Diploma certificate", "institution": "Karavali Polytechnic, Mangaluru", "qualification": "Diploma in Electronics & Communication", "year": "2007", "score": "61%" }
+	},
+	"row_notes": {
+		"aadhaar.name": { "note": "The ID card says \"Ravi S. Shetty\". An initial instead of a full name — common, but worth confirming.", "clue": "c03_name_variants" },
+		"pan.name": { "note": "The tax card spells out \"Ravi Sadashiva Shetty\". Three versions of the same name across three papers.", "clue": "c03_name_variants" },
+		"employment.left": { "note": "Experience certificate matches the resume exactly.", "clue": "c03_letter_ok" }
+	},
+	"clues": {
+		"c03_modest_edu": { "text": "Highest qualification is a diploma (61%). No degree.", "category": "education", "kind": "visible", "source": "resume" },
+		"c03_family_business": { "text": "Seven years at a family-run computer shop: hard to verify independently.", "category": "employment", "kind": "visible", "source": "resume" },
+		"c03_long_tenure": { "text": "Nearly twelve years at one hospital network, ending only because of an acquisition.", "category": "employment", "kind": "visible", "source": "resume" },
+		"c03_incident_claim": { "text": "Resume mentions keeping hospital systems running during a \"2023 incident\" with no detail.", "category": "employment", "kind": "visible", "source": "resume" },
+		"c03_name_variants": { "text": "Name appears as \"Ravi Shetty\", \"Ravi S. Shetty\" and \"Ravi Sadashiva Shetty\" across documents.", "category": "identity", "kind": "deep", "contradiction": true, "resolved_by": "c03_full_name", "source": "document" },
+		"c03_letter_ok": { "text": "Hospital experience certificate matches the resume (IT Systems Supervisor, 01-2015 to 10-2026).", "category": "employment", "kind": "deep", "source": "document" },
+		"c03_full_name": { "text": "Hospital HR: their records list him as Ravi Sadashiva Shetty. The \"S.\" is his father's name. Same person.", "category": "identity", "kind": "deep", "source": "call" },
+		"c03_ransomware": { "text": "News: during the 2023 ransomware attack on Coastal Care, in-house IT supervisor Ravi Shetty restored critical systems from offline backups within 14 hours. No patient data was lost.", "category": "employment", "kind": "major", "source": "search" },
+		"c03_hospital_ref": { "text": "Hospital HR: \"We would rehire him in a heartbeat. The new owners didn't keep anyone local.\"", "category": "reference", "kind": "deep", "source": "call" },
+		"c03_rao_ransomware": { "text": "Dr. Rao confirms he worked 30 hours straight during the attack and refused the bonus, asking that it go to the night nurses.", "category": "conduct", "kind": "deep", "source": "call" },
+		"c03_blunt": { "text": "Dr. Rao: \"He is blunt with management. Never with patients or staff.\"", "category": "conduct", "kind": "deep", "source": "call" },
+		"c03_lfcs": { "text": "Linux Foundation registry: LFCS certification for Ravi Shetty (2021) is valid.", "category": "education", "kind": "deep", "source": "search" },
+		"c03_forum_rant": { "text": "An angry forum post by \"ravi_s\" complains that IT staff are \"treated like peons by management\".", "category": "conduct", "kind": "misleading", "source": "search" }
+	},
+	"search": [
+		{ "id": "s03_ransom", "terms": ["coastal care", "ransomware", "ravi shetty", "shetty", "hospital"], "source": "Karavali Times — archive", "url": "karavalitimes.in/2023/08/hospital-attack", "title": "Hospital back online in 14 hours after ransomware attack", "snippet": "Coastal Care credits in-house IT supervisor Ravi Shetty, who restored systems from offline backups...", "body": "MANGALURU, August 2023. Coastal Care Hospitals restored its admissions, pharmacy and lab systems within 14 hours of a ransomware attack that crippled two other hospitals in the region. Administrators credited IT supervisor Ravi Shetty, who had insisted on weekly offline backups 'that nobody thought we needed'. No patient data was lost.", "clue": "c03_ransomware" },
+		{ "id": "s03_lfcs", "terms": ["ravi shetty", "lfcs", "linux foundation", "certificate", "verify"], "source": "Linux Foundation — certification registry", "url": "verify.lf-training.org", "title": "Certificate verification: Ravi Shetty — LFCS", "snippet": "Linux Foundation Certified System Administrator — issued 2021 — VALID", "body": "Holder: Ravi Shetty. Certification: LFCS. Issued: November 2021. Status: VALID (renewed 2024).", "clue": "c03_lfcs" },
+		{ "id": "s03_rant", "terms": ["ravi shetty", "ravi_s", "shetty", "it staff"], "source": "DeskRant forum", "url": "deskrant.net/t/it-staff-peons", "title": "IT staff treated like peons — rant thread", "snippet": "posted by ravi_s · Delhi · joined 2024", "body": "posted by ravi_s (Delhi, member since 2024): 'Management treats IT like peons. I'm done being polite.' 41 replies.", "clue": "c03_forum_rant" },
+		{ "id": "s03_acq", "terms": ["coastal care", "acquired", "acquisition", "hospital"], "source": "HealthBiz Weekly", "url": "healthbizweekly.in/coastal-care-acquired", "title": "National chain acquires Coastal Care; back-office to be centralised", "snippet": "Local IT, billing and HR roles will move to the Chennai headquarters...", "body": "Coastal Care Hospitals has been acquired by MediLine Health. Back-office functions including IT, billing and HR will be centralised in Chennai by October 2026.", "clue": "" }
+	],
+	"truth": {
+		"correct_decision": "accept",
+		"quality": "excellent",
+		"ceo_trigger": "reject_good",
+		"key_clues": ["c03_ransomware", "c03_hospital_ref", "c03_full_name"]
+	}
+}

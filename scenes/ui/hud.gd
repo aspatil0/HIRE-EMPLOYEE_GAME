@@ -12,6 +12,7 @@ extends Control
 @onready var _status: Label = %Status
 @onready var _status_dot: ColorRect = %StatusDot
 @onready var _pause: Button = %PauseButton
+@onready var _journal: Button = %JournalButton
 @onready var _hint: Label = %Hint
 @onready var _card: VBoxContainer = %LocationCard
 @onready var _card_title: Label = %CardTitle
@@ -20,10 +21,16 @@ extends Control
 
 var _toast_tween: Tween
 
+signal journal_requested
+
 
 func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_pause.focus_mode = Control.FOCUS_NONE
+	_journal.focus_mode = Control.FOCUS_NONE
+	_journal.pressed.connect(func() -> void:
+		if GameManager.can_interact():
+			journal_requested.emit())
 	_pause.pressed.connect(func() -> void:
 		AudioManager.play_sfx(&"ui_click")
 		GameManager.set_paused(true))
@@ -40,9 +47,9 @@ func _ready() -> void:
 func _refresh() -> void:
 	_day.text = "DAY %d" % GameState.day
 	_time.text = GameState.get_time_string()
-	_candidates.text = "CANDIDATES   %d PENDING   ·   %d / %d HIRED" % [GameState.candidates_pending, GameState.hires, GameState.hire_target]
+	_candidates.text = "RECRUITMENT REVIEW — %d APPLICATION%s PENDING   ·   %d / %d HIRED" % [GameState.candidates_pending, "" if GameState.candidates_pending == 1 else "S", GameState.hires, GameState.hire_target]
 	var status := GameState.get_company_status()
-	_status.text = "COMPANY   %s" % status
+	_status.text = "COMPANY   %s      CEO WARNINGS LEFT   %d" % [status, Recruitment.warnings_left()]
 	var col := Color(0.45, 0.75, 0.5)
 	if status == "STRAINED":
 		col = Color(0.9, 0.7, 0.3)

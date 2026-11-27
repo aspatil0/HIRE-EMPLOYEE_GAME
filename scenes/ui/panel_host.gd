@@ -25,6 +25,8 @@ func open(scene: PackedScene, ctx: Dictionary = {}) -> ModalPanel:
 	if panel == null:
 		push_error("PanelHost: scene is not a ModalPanel: %s" % scene.resource_path)
 		return null
+	if not ctx.has("host"):
+		ctx["host"] = self
 	panel.context = ctx
 	panel.closed.connect(_on_panel_closed.bind(panel))
 	current_panel = panel
@@ -33,6 +35,18 @@ func open(scene: PackedScene, ctx: Dictionary = {}) -> ModalPanel:
 	add_child(panel)
 	panel_opened.emit(panel)
 	return panel
+
+
+## Closes the current panel (if any) and opens another once it has gone,
+## e.g. resume viewer -> decision screen.
+func switch_to(scene: PackedScene, ctx: Dictionary = {}) -> void:
+	if current_panel == null:
+		open(scene, ctx)
+		return
+	var closing := current_panel
+	await closing.close()
+	if current_panel == null or current_panel == closing:
+		open(scene, ctx)
 
 
 func close_current() -> void:

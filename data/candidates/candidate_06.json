@@ -1,0 +1,71 @@
+{
+	"id": "c06",
+	"index": 6,
+	"resume": {
+		"name": "Ira Mehra",
+		"claimed_age": 29,
+		"dob": "09-10-1997",
+		"gender": "Female",
+		"address": "House 13, Old Mill Road",
+		"city": "Nashik",
+		"phone": "+91 20 4113 1313",
+		"email": "ira.m@quietmail.in",
+		"position": "Executive Assistant",
+		"education": {
+			"qualification": "B.A. (English Literature)",
+			"institution": "Godavari Arts College, Nashik",
+			"year": "2018",
+			"score": "64%",
+			"certifications": []
+		},
+		"experience": [
+			{ "company": "Confidential — corporate office, Pune", "designation": "Executive Assistant", "joined": "01-2019", "left": "02-2024", "salary": "Withheld", "reason": "Contract ended." }
+		],
+		"total_experience": "5 years",
+		"skills": ["Discretion", "Minute-taking", "Records management", "Archiving"],
+		"achievements": ["Maintained the executive office's archive of personnel files."],
+		"references": [],
+		"expected_salary": "Negotiable",
+		"notice_period": "Immediate",
+		"statement": "I worked in an office very much like yours. I would like to come back and finish what I started.",
+		"footer": "References: available on request."
+	},
+	"documents": {
+		"aadhaar": { "name": "Ira Mehra", "dob": "09-10-1997", "gender": "Female", "address": "House 13, Old Mill Road, Nashik 422001", "city": "Nashik", "number": "XXXX XXXX 1313", "issued": "2024" },
+		"pan": { "name": "Ira Mehra", "dob": "09-10-1997", "number": "FICPM1313I" },
+		"passport": null,
+		"employment": null,
+		"education": { "issuer": "Godavari Arts College", "kind": "Degree certificate (photocopy)", "institution": "Godavari Arts College, Nashik", "qualification": "B.A. (English Literature)", "year": "2018", "score": "64%" }
+	},
+	"row_notes": {
+		"employment.company": { "note": "No employment document was submitted. The employer's name is withheld even on the resume.", "clue": "c06_no_employment_doc" },
+		"education.year": { "note": "The certificate is a photocopy. It matches the resume, but a copy proves very little on its own.", "clue": "c06_photocopy" },
+		"aadhaar.name": { "note": "Name, date of birth and address all match. The card was issued in 2024 — the same month her contract ended.", "clue": "c06_new_id" }
+	},
+	"clues": {
+		"c06_withheld": { "text": "Previous employer is listed only as \"Confidential — corporate office, Pune\".", "category": "employment", "kind": "visible", "source": "resume" },
+		"c06_no_refs": { "text": "No references provided (\"available on request\").", "category": "reference", "kind": "visible", "source": "resume" },
+		"c06_gap": { "text": "No employment since February 2024: a 2.5-year gap, unexplained.", "category": "employment", "kind": "visible", "source": "resume" },
+		"c06_statement": { "text": "Her statement: \"I worked in an office very much like yours. I would like to come back and finish what I started.\"", "category": "conduct", "kind": "visible", "source": "resume" },
+		"c06_no_employment_doc": { "text": "No employment verification document was submitted.", "category": "employment", "kind": "deep", "contradiction": true, "resolved_by": "c06_ashgrove_directory", "source": "document" },
+		"c06_photocopy": { "text": "Education certificate is a photocopy only.", "category": "education", "kind": "deep", "contradiction": true, "resolved_by": "c06_college_closed", "source": "document" },
+		"c06_new_id": { "text": "Her ID card was issued in February 2024, the month her contract ended.", "category": "identity", "kind": "deep", "source": "document" },
+		"c06_college_closed": { "text": "Godavari Arts College closed in 2021; its records moved to the state university. Her degree is listed there: verified, but only by a backlog register.", "category": "education", "kind": "deep", "source": "search / call" },
+		"c06_ashgrove_directory": { "text": "An archived 2023 company directory lists \"Ira Mehra — Executive Assistant, Office of the CEO\" at ASHGROVE HOLDINGS. Her confidential employer was this company.", "category": "employment", "kind": "major", "source": "search" },
+		"c06_phone_1313": { "text": "Calling her listed number connects to an automated message: \"Ashgrove Holdings. Internal line 1313.\" That is your extension.", "category": "identity", "kind": "major", "source": "call" },
+		"c06_records_sealed": { "text": "Ashgrove Records Office: her personnel file is \"sealed by order of the CEO's office\".", "category": "employment", "kind": "major", "source": "call" },
+		"c06_anonymous_email": { "text": "The anonymous 03:13 email (\"you were not the first\") was sent from terminal 13-A — your own terminal.", "category": "conduct", "kind": "deep", "source": "email" },
+		"c06_no_trace": { "text": "Search for her name returns almost nothing from the last two years.", "category": "identity", "kind": "misleading", "source": "search" }
+	},
+	"search": [
+		{ "id": "s06_archive", "terms": ["ira mehra", "mehra", "ashgrove", "directory", "office of the ceo"], "source": "WebArchive — snapshot 2023", "url": "web-archive.example/2023/ashgrove.co.in/people", "title": "Ashgrove Holdings — Our People (archived 14 June 2023)", "snippet": "Office of the CEO: Aditya (Chief Executive Officer) · Ira Mehra (Executive Assistant)...", "body": "ASHGROVE HOLDINGS — OUR PEOPLE (archived snapshot, 14 June 2023). Office of the CEO: Aditya, Chief Executive Officer. Ira Mehra, Executive Assistant. Recruitment: [name removed], Head of Recruitment, Floor 13. This page no longer exists on the live site.", "clue": "c06_ashgrove_directory" },
+		{ "id": "s06_college", "terms": ["godavari", "college", "ira mehra", "nashik", "verify"], "source": "State University — legacy records", "url": "univ-records.example/legacy/godavari", "title": "Godavari Arts College (closed 2021) — records transferred", "snippet": "Degree verification for the closed college is available from the backlog register...", "body": "Godavari Arts College, Nashik, ceased operations in 2021. Its records are held by the State University legacy register. Backlog register entry: MEHRA, IRA — B.A. English Literature — 2018 — Second Class. Verification: register entry only; original files damaged.", "clue": "c06_college_closed" },
+		{ "id": "s06_none", "terms": ["ira mehra", "mehra", "ira"], "source": "netlink search", "url": "search.netlink.in", "title": "Few results for this name since 2024", "snippet": "No social profiles, no professional listing, no news.", "body": "Your search returned no recent public profiles. This is unusual but not unheard of; some people simply stay offline.", "clue": "c06_no_trace" }
+	],
+	"truth": {
+		"correct_decision": "",
+		"quality": "unknown",
+		"ceo_trigger": "",
+		"key_clues": ["c06_ashgrove_directory", "c06_phone_1313", "c06_records_sealed"]
+	}
+}

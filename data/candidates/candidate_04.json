@@ -1,0 +1,78 @@
+{
+	"id": "c04",
+	"index": 4,
+	"resume": {
+		"name": "Farah Qureshi",
+		"claimed_age": 33,
+		"dob": "14-01-1993",
+		"gender": "Female",
+		"address": "B-12, Sunrise Apartments, Andheri West",
+		"city": "Mumbai",
+		"phone": "+91 98765 40404",
+		"email": "farah.q.accounts@mailnet.in",
+		"position": "Senior Accountant",
+		"education": {
+			"qualification": "B.Com",
+			"institution": "Awadh College of Commerce, Lucknow",
+			"year": "2014",
+			"score": "72%",
+			"certifications": ["CA Intermediate — Group I (2016)"]
+		},
+		"experience": [
+			{ "company": "Meridian Finserv Pvt. Ltd.", "designation": "Senior Accounts Executive", "joined": "04-2018", "left": "08-2025", "salary": "₹8.4 LPA", "reason": "Relocated to Mumbai in 2025." },
+			{ "company": "Awadh Traders", "designation": "Accounts Assistant", "joined": "06-2014", "left": "03-2018", "salary": "₹2.6 LPA", "reason": "Larger firm." }
+		],
+		"total_experience": "11 years",
+		"skills": ["Accounts payable & receivable", "Bank reconciliation", "Payroll", "Tally ERP", "Advanced Excel"],
+		"achievements": ["Managed payables for 300+ vendors.", "Introduced a payroll checklist that halved correction requests."],
+		"references": [
+			{ "name": "HR Department, Meridian Finserv", "relation": "Previous employer", "contact": "ref_c04_meridian" },
+			{ "name": "Imran Siddiqui", "relation": "Owner, Awadh Traders (first employer)", "contact": "ref_c04_awadh" }
+		],
+		"expected_salary": "₹11 LPA",
+		"notice_period": "Immediate",
+		"statement": "I moved cities to start again. I am organised, quick, and I learn every system I am given.",
+		"footer": ""
+	},
+	"documents": {
+		"aadhaar": { "name": "Farah Qureshi", "dob": "14-01-1993", "gender": "Female", "address": "House 22, Sector C, Aliganj, Lucknow 226024", "city": "Lucknow", "number": "XXXX XXXX 0494", "issued": "2019" },
+		"pan": { "name": "Farah Qureshi", "dob": "14-01-1993", "number": "FICPQ0494F" },
+		"passport": { "name": "Farha Qureshi", "dob": "14-01-1993", "address": "Aliganj, Lucknow", "city": "Lucknow", "number": "F0494870", "expiry": "21-03-2026" },
+		"employment": { "issuer": "Meridian Finserv Pvt. Ltd.", "kind": "Experience letter (supplied by candidate)", "company": "Meridian Finserv Pvt. Ltd.", "designation": "Senior Accounts Executive", "joined": "04-2018", "left": "08-2025", "signed_by": "P. Arora, HR (signature)" },
+		"education": { "issuer": "Awadh College of Commerce", "kind": "Degree certificate", "institution": "Awadh College of Commerce, Lucknow", "qualification": "B.Com", "year": "2014", "score": "72%" }
+	},
+	"row_notes": {
+		"aadhaar.address": { "note": "The ID card still shows a Lucknow address. Her resume says Mumbai.", "clue": "c04_address_mismatch" },
+		"passport.address": { "note": "The passport also carries the old Lucknow address.", "clue": "c04_address_mismatch" },
+		"passport.name": { "note": "The passport reads \"Farha\", not \"Farah\". One transposed letter.", "clue": "c04_passport_spelling" },
+		"passport.expiry": { "note": "This passport expired in March 2026. It is not valid identification today.", "clue": "c04_passport_expired" },
+		"employment.designation": { "note": "Matches the resume word for word. But look closely: the designation line is set in a slightly different typeface from the rest of the letter, and the baseline sits two millimetres low.", "clue": "c04_letter_font" },
+		"employment.left": { "note": "Letter says August 2025, matching the resume. The date line uses the same mismatched typeface.", "clue": "c04_letter_font" }
+	},
+	"clues": {
+		"c04_relocation": { "text": "Resume states she relocated from Lucknow to Mumbai in 2025.", "category": "identity", "kind": "visible", "source": "resume" },
+		"c04_title_jump": { "text": "Moved from Accounts Assistant to \"Senior Accounts Executive\" with no intermediate title.", "category": "employment", "kind": "visible", "source": "resume" },
+		"c04_ca_partial": { "text": "Lists CA Intermediate Group I only (partial qualification), stated honestly.", "category": "education", "kind": "visible", "source": "resume" },
+		"c04_address_mismatch": { "text": "CONTRADICTION: ID card address is Lucknow; resume address is Mumbai.", "category": "identity", "kind": "deep", "contradiction": true, "resolved_by": "c04_relocation_confirm", "source": "document" },
+		"c04_passport_spelling": { "text": "CONTRADICTION: passport spells her name \"Farha\".", "category": "identity", "kind": "deep", "contradiction": true, "resolved_by": "c04_passport_correction", "source": "document" },
+		"c04_passport_expired": { "text": "Passport expired on 21-03-2026.", "category": "identity", "kind": "deep", "contradiction": true, "resolved_by": "c04_passport_correction", "source": "document" },
+		"c04_passport_correction": { "text": "Passport office portal: renewal application filed Feb 2026 with a name-spelling correction (\"Farha\" → \"Farah\"). Status: in process.", "category": "identity", "kind": "deep", "source": "search" },
+		"c04_relocation_confirm": { "text": "Her first employer confirms she moved to Mumbai in 2025; address change is genuine.", "category": "reference", "kind": "deep", "source": "call" },
+		"c04_letter_font": { "text": "CONTRADICTION: the experience letter's designation and date lines are in a different typeface from the rest of the letter.", "category": "employment", "kind": "major", "contradiction": true, "source": "document" },
+		"c04_meridian_truth": { "text": "Meridian HR: she was an Accounts Assistant, never Senior Accounts Executive, and she left in February 2023 — not August 2025.", "category": "employment", "kind": "major", "contradiction": true, "source": "call" },
+		"c04_logo": { "text": "Meridian rebranded in 2022; the letter carries the old logo but is dated 2025.", "category": "employment", "kind": "deep", "contradiction": true, "source": "search" },
+		"c04_awadh_praise": { "text": "Awadh Traders' owner: \"Fast, honest with money, learned everything in a month.\"", "category": "reference", "kind": "deep", "source": "call" },
+		"c04_volunteer": { "text": "Social media shows her volunteering at a community kitchen. Irrelevant to the job.", "category": "conduct", "kind": "misleading", "source": "search" }
+	},
+	"search": [
+		{ "id": "s04_passport", "terms": ["farah qureshi", "farha qureshi", "passport", "qureshi"], "source": "National Passport Office — application status", "url": "passportstatus.gov-portal.in", "title": "Application status: QURESHI, FARAH (formerly FARHA)", "snippet": "Re-issue with change in name spelling — filed 11-02-2026 — IN PROCESS", "body": "File number LKO-2026-0494. Service: Re-issue of passport (expired) with correction of given name from FARHA to FARAH. Filed: 11-02-2026. Status: IN PROCESS — police verification pending at new address (Mumbai).", "clue": "c04_passport_correction" },
+		{ "id": "s04_meridian", "terms": ["meridian", "finserv", "farah qureshi", "logo"], "source": "Meridian Finserv", "url": "meridianfinserv.in/news/new-identity", "title": "Meridian unveils new brand identity (2022)", "snippet": "From 1 July 2022 all Meridian correspondence uses our new logo and letterhead...", "body": "Meridian Finserv announces its new brand identity. From 1 July 2022 all official correspondence, including HR letters, carries the new logo and letterhead. Old stationery has been withdrawn.", "clue": "c04_logo" },
+		{ "id": "s04_kitchen", "terms": ["farah qureshi", "qureshi", "farah"], "source": "Social feed", "url": "social.example/farah.q", "title": "Farah Q — Sunday at the community kitchen", "snippet": "Served 200 plates today with the Andheri volunteers...", "body": "A public post of volunteers serving food at a community kitchen in Andheri. Nothing in it relates to her employment history.", "clue": "c04_volunteer" }
+	],
+	"truth": {
+		"correct_decision": "reject",
+		"quality": "dishonest",
+		"ceo_trigger": "",
+		"key_clues": ["c04_letter_font", "c04_meridian_truth"]
+	}
+}

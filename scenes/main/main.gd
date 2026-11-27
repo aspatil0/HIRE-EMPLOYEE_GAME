@@ -7,6 +7,8 @@ extends Control
 ##   --scene=res://path.tscn   skip the menu and open a scene directly (dev)
 ##   --activate=<id>           with --scene: after 2.5 s, click the interactable
 ##                             with that interaction_id (dev/screenshot helper)
+##   --demo=<investigation|ceo|final_warning|fired|perfect_shared|perfect_quiet|complete>  seed Phase 2 progress (dev screenshots)
+##   --open=<resume|document|decision|journal|report>  open a panel after 2.5 s
 ##   --capture=<s>:<file.png>[,<s>:<file.png>...]
 ##                             save screenshots at those times, then quit (dev QA)
 
@@ -38,6 +40,10 @@ func _ready() -> void:
 			activate = a.trim_prefix("--activate=")
 		elif a.begins_with("--capture="):
 			_dev_capture.call_deferred(a.trim_prefix("--capture="))
+		elif a.begins_with("--demo="):
+			_dev_demo(a.trim_prefix("--demo="))
+		elif a.begins_with("--open="):
+			_dev_open(a.trim_prefix("--open="))
 	if target != MENU_SCENE:
 		GameManager.set_mode(GameManager.Mode.EXPLORE)
 	if not activate.is_empty():
@@ -74,6 +80,71 @@ static func _dev_activate(id: String) -> void:
 			controller.activate(it)
 			return
 	push_warning("--activate: no interactable '%s'" % id)
+
+
+## Dev helper: seeds Phase 2 progress through the real Recruitment API.
+static func _dev_demo(kind: String) -> void:
+	GameManager.saving_enabled = false
+	for f in [&"intro_seen", &"arrival_seen", &"call_day1_done", &"candidates_received"]:
+		GameState.set_flag(f)
+	GameState.time_minutes = 22 * 60 + 14
+	Recruitment.view_resume("c01")
+	for row_id in ["aadhaar.name", "aadhaar.dob", "aadhaar.address", "age", "pan.name", "pan.dob"]:
+		Recruitment.verify_row("c01", row_id)
+	Recruitment.start_call("ref_c01_sahyadri")
+	Recruitment.ask("dates")
+	Recruitment.end_call()
+	for h in Recruitment.search("Sham Mathur"):
+		if h["result"].get("id", "") == "s01_news":
+			Recruitment.open_result(h["candidate_id"], h["result"])
+	Recruitment.set_notes("c01", "Age 56 vs DOB 1986?? Ask CareerNest. News story = same man?")
+	Recruitment.set_flagged("c01", true)
+	Recruitment.view_resume("c02")
+	for row_id in ["employment.company", "employment.designation", "employment.left"]:
+		Recruitment.verify_row("c02", row_id)
+	if kind == "ceo":
+		Recruitment.decide("c03", "reject", "No degree")
+	elif kind == "final_warning":
+		Recruitment.decide("c03", "reject")
+		Recruitment.resolve_intervention("keep")
+		Recruitment.decide("c05", "accept")
+	elif kind == "fired":
+		Recruitment.decide("c01", "reject")
+		Recruitment.resolve_intervention("keep")
+		Recruitment.decide("c04", "accept")
+		Recruitment.resolve_intervention("keep")
+		Recruitment.decide("c02", "accept")
+	elif kind in ["perfect_shared", "perfect_quiet"]:
+		for plan: Array in [["c01", "accept"], ["c02", "reject"], ["c03", "accept"], ["c04", "reject"]]:
+			Recruitment.decide(plan[0], plan[1])
+		for m in Recruitment.visible_emails(DataLoader.company(1)):
+			if m.get("id", "") == "anon_3":
+				Recruitment.reply_email(m, "share" if kind == "perfect_shared" else "ignore")
+		Recruitment.decide("c05", "reject")
+		Recruitment.decide("c06", "accept")
+	elif kind == "complete":
+		for plan: Array in [["c01", "accept"], ["c02", "reject"], ["c03", "accept"], ["c04", "accept"], ["c05", "reject"], ["c06", "accept"]]:
+			Recruitment.decide(plan[0], plan[1])
+	Recruitment.refresh_stats()
+	GameState.set_objective("RECRUITMENT REVIEW — investigate all six applicants, then ACCEPT or REJECT each.")
+
+
+static func _dev_open(panel_name: String) -> void:
+	var tree := Engine.get_main_loop() as SceneTree
+	await tree.create_timer(2.5).timeout
+	var host := tree.current_scene.find_child("PanelHost", true, false) as PanelHost if tree.current_scene else null
+	var paths := {"resume": RecruitUI.RESUME_SCENE, "document": RecruitUI.DOCUMENT_SCENE, "decision": RecruitUI.DECISION_SCENE,
+		"journal": RecruitUI.JOURNAL_SCENE, "report": RecruitUI.REPORT_SCENE}
+	for method: StringName in [&"show_%s" % panel_name, &"show_game_over" if panel_name == "gameover" else &""]:
+		if tree.current_scene and not String(method).is_empty() and tree.current_scene.has_method(method):
+			if DialogueManager.dialogue_ended.is_connected(Callable(tree.current_scene, &"_on_dialogue_ended")):
+				DialogueManager.dialogue_ended.disconnect(Callable(tree.current_scene, &"_on_dialogue_ended"))
+			DialogueManager.end()
+			tree.current_scene.call(method)
+			return
+	if host and paths.has(panel_name):
+		var panel := host.open(load(paths[panel_name]), {"candidate_id": "c01"})
+		print("[DEV] open %s -> %s (mode %d)" % [panel_name, panel, GameManager.mode])
 
 
 ## Dev helper: timed screenshots of the real rendered viewport, then quit.
@@ -130,7 +201,7 @@ func _run_smoke_test(systems_ok: bool) -> void:
 	GameState.reset()
 
 	# Data files.
-	_check(DataLoader.candidates(1).size() == 6, "candidate data loads")
+	_check(Recruitment.candidates.size() == 6, "candidate data loads")
 	_check(not DataLoader.company(1).is_empty(), "company data loads")
 	for path in ["res://data/dialogue/intro_assignment.json", "res://data/dialogue/call_aditya_day1.json", "res://data/dialogue/office_arrival.json"]:
 		_check(not DialogueManager.load_dialogue_file(path).is_empty(), "dialogue file %s" % path.get_file())
@@ -140,6 +211,9 @@ func _run_smoke_test(systems_ok: bool) -> void:
 		_check(AudioManager.get_stream(id) != null, "sound '%s'" % id)
 
 	await _test_office()
+	var p2 := Phase2Tests.new(self)
+	await p2.run()
+	_check(p2.finished, "P2: all Phase 2 test sections ran to completion")
 	await _test_scene_boots(MENU_SCENE)
 	await _test_intro()
 

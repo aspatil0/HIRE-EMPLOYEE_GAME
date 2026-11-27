@@ -1,0 +1,154 @@
+{
+	"id": "phase_2_references",
+	"notes": "Reference contacts reachable from the desk phone. availability: answers | no_answer | automated. max_calls limits how often Alice can call; max_questions limits questions per call.",
+	"contacts": {
+		"ref_c01_sahyadri": {
+			"name": "HR Desk — Sahyadri Agro Exports", "number": "020 5550 1401", "candidate": "c01",
+			"availability": "answers", "max_calls": 1, "max_questions": 2,
+			"greeting": "Sahyadri Agro, HR. We're mostly packed into boxes, but go ahead.",
+			"questions": [
+				{ "id": "dates", "text": "Can you confirm Sham Mathur's role and dates?", "response": "Senior Accounts Officer, June 2015 to September 2026. He'd have stayed if we hadn't moved to Bengaluru. Most reliable person in finance.", "clue": "c01_sahyadri_confirms" },
+				{ "id": "age", "text": "His resume says he is 56. Does that sound right?", "response": "Fifty-six? Sham? He's about forty. He celebrated his fortieth in the office this August — there was cake.", "clue": "" },
+				{ "id": "why", "text": "Why did he leave?", "response": "He didn't, really. We left him. The whole team was offered Bengaluru; his mother is unwell, so he stayed in Pune.", "clue": "" }
+			],
+			"goodbye": "Hire him, honestly. Someone should."
+		},
+		"ref_c01_bhave": {
+			"name": "Anil Bhave — Kulkarni & Bhave CA", "number": "020 5550 1402", "candidate": "c01",
+			"availability": "answers", "max_calls": 1, "max_questions": 2,
+			"greeting": "Bhave speaking. Sham? Yes, I remember Sham.",
+			"questions": [
+				{ "id": "honesty", "text": "Was he honest with clients' money?", "response": "Too honest for my business, once. He refused to sign off a client's inflated invoices in 2014. We lost the account. I was furious. I was also wrong.", "clue": "c01_bhave_praise" },
+				{ "id": "weakness", "text": "What was his biggest weakness?", "response": "Slow. Painfully thorough. He missed two filing deadlines in his first year because he kept re-checking. He got faster.", "clue": "c01_bhave_slow" },
+				{ "id": "rehire", "text": "Would you hire him again?", "response": "If he'd come back. He won't. He's past audit work.", "clue": "" }
+			],
+			"goodbye": "Give him my regards."
+		},
+		"ref_c01_careernest": {
+			"name": "CareerNest Placements — client desk", "number": "020 5550 1456", "candidate": "c01",
+			"availability": "answers", "max_calls": 1, "max_questions": 2,
+			"greeting": "CareerNest Placements, client desk, how may I help?",
+			"questions": [
+				{ "id": "age", "text": "The Sham Mathur resume you sent lists his age as 56. Is that correct?", "response": "Oh no — not another one. Our template bug filled the age with the file code; his was CN-56. He's forty. We've emailed you a corrected copy. I'm so sorry.", "clue": "c01_agency_error" },
+				{ "id": "who", "text": "Did he write the resume himself?", "response": "We formatted it from his notes. He checked the content, not the layout. The layout is where the bug was.", "clue": "" },
+				{ "id": "others", "text": "Do you represent any other applicants for Ashgrove?", "response": "Just him for Ashgrove, ma'am.", "clue": "" }
+			],
+			"goodbye": "Again, apologies for the confusion."
+		},
+		"ref_c02_zentrix": {
+			"name": "HR — Zentrix Cloud Solutions", "number": "080 5550 2201", "candidate": "c02",
+			"availability": "answers", "max_calls": 1, "max_questions": 2,
+			"greeting": "Zentrix People Operations. We do not confirm employment details by telephone.",
+			"questions": [
+				{ "id": "dates", "text": "Can you at least confirm when Arjun Malhotra left?", "response": "Our records show employment ended in March 2022. That is all I can say on a call.", "clue": "c02_zentrix_dates" },
+				{ "id": "rehire", "text": "Is he eligible for rehire?", "response": "...He is flagged ineligible for rehire. Termination followed an internal investigation into unauthorised access to client data. I shouldn't say more.", "clue": "c02_zentrix_termination" },
+				{ "id": "role", "text": "Was his title Lead Infrastructure Engineer?", "response": "We don't confirm titles by phone. Use a background bureau.", "clue": "" }
+			],
+			"goodbye": "Please put any further requests in writing."
+		},
+		"ref_c02_sen": {
+			"name": "Rahul Sen — personal mobile", "number": "98765 22022", "candidate": "c02",
+			"availability": "answers", "max_calls": 1, "max_questions": 2,
+			"greeting": "Rahul here! You're calling about Arjun? Brilliant. Ask me anything.",
+			"questions": [
+				{ "id": "skill", "text": "How would you rate his technical work?", "response": "Best engineer I've ever worked with. Ever. Access controls, automation — he could run your whole stack alone.", "clue": "c02_sen_praise" },
+				{ "id": "when", "text": "When did you last work together?", "response": "Till... recently. He's been consulting with my firm since 2022, actually. Between jobs. Great asset.", "clue": "c02_sen_conflict" },
+				{ "id": "why_left", "text": "Why did he leave Zentrix?", "response": "Politics. Zentrix is a political place. He outgrew it. Next question?", "clue": "" }
+			],
+			"goodbye": "You'd be lucky to get him."
+		},
+		"ref_c03_coastal": {
+			"name": "HR Office — Coastal Care Hospitals", "number": "0824 555 3301", "candidate": "c03",
+			"availability": "answers", "max_calls": 1, "max_questions": 2,
+			"greeting": "Coastal Care HR. What's left of it.",
+			"questions": [
+				{ "id": "rehire", "text": "Would you rehire Ravi Shetty?", "response": "In a heartbeat. The new owners didn't keep anyone local. He's the reason this hospital still had records after the attack.", "clue": "c03_hospital_ref" },
+				{ "id": "name", "text": "His documents show different versions of his name. What do your records say?", "response": "Ravi Sadashiva Shetty. The S is his father's name. People here only ever called him Ravi.", "clue": "c03_full_name" },
+				{ "id": "dates", "text": "Can you confirm his dates?", "response": "January 2015 to October 2026. IT Systems Supervisor.", "clue": "" }
+			],
+			"goodbye": "Take care of him. He never takes care of himself."
+		},
+		"ref_c03_rao": {
+			"name": "Dr. Anitha Rao — former Medical Director", "number": "0824 555 3302", "candidate": "c03",
+			"availability": "answers", "max_calls": 1, "max_questions": 2,
+			"greeting": "Dr. Rao. I have five minutes.",
+			"questions": [
+				{ "id": "attack", "text": "What happened during the 2023 incident?", "response": "Ransomware. Two hospitals nearby lost everything. Ravi worked thirty hours straight and had us running by morning. He refused the bonus and asked that it go to the night nurses.", "clue": "c03_rao_ransomware" },
+				{ "id": "team", "text": "How is he with people?", "response": "Blunt with management. Never with patients or staff. If your executives want flattery, he'll disappoint them.", "clue": "c03_blunt" },
+				{ "id": "degree", "text": "Does his lack of a degree concern you?", "response": "I have two degrees and I can't restore a backup. Next question.", "clue": "" }
+			],
+			"goodbye": "He's worth more than he asks for."
+		},
+		"ref_c04_meridian": {
+			"name": "HR — Meridian Finserv", "number": "022 5550 4401", "candidate": "c04",
+			"availability": "answers", "max_calls": 1, "max_questions": 2,
+			"greeting": "Meridian Finserv, human resources.",
+			"questions": [
+				{ "id": "title", "text": "Can you confirm Farah Qureshi was a Senior Accounts Executive until August 2025?", "response": "Let me check... No. Accounts Assistant throughout. Last working day 28 February 2023. We never issued her a 'Senior' title.", "clue": "c04_meridian_truth" },
+				{ "id": "letter", "text": "Her experience letter is dated 2025. Does your letterhead have a red square logo?", "response": "Red square? That's our old stationery. We stopped using it in 2022. Any letter on it dated 2025 didn't come from us.", "clue": "c04_logo" },
+				{ "id": "conduct", "text": "Was there any problem with her work?", "response": "None on file. She was competent. She just... wasn't senior.", "clue": "" }
+			],
+			"goodbye": "Send us the letter if you want it checked formally."
+		},
+		"ref_c04_awadh": {
+			"name": "Imran Siddiqui — Awadh Traders", "number": "0522 555 4402", "candidate": "c04",
+			"availability": "answers", "max_calls": 1, "max_questions": 2,
+			"greeting": "Awadh Traders, Imran speaking.",
+			"questions": [
+				{ "id": "work", "text": "What was Farah like as an employee?", "response": "Fast, honest with money. Learned everything in a month. I was sorry to lose her.", "clue": "c04_awadh_praise" },
+				{ "id": "move", "text": "Did she move to Mumbai recently?", "response": "Yes, early 2025. She told me she was starting over there. She still sends Eid greetings.", "clue": "c04_relocation_confirm" },
+				{ "id": "meridian", "text": "Do you know what happened at Meridian?", "response": "She didn't talk about Meridian much. Something there didn't end well, I think.", "clue": "" }
+			],
+			"goodbye": "Whatever happened there, she was a good worker here."
+		},
+		"ref_c05_halden": {
+			"name": "HR — Halden & Rao Advisory", "number": "011 5550 5501", "candidate": "c05",
+			"availability": "answers", "max_calls": 1, "max_questions": 2,
+			"greeting": "Halden and Rao. Human resources.",
+			"questions": [
+				{ "id": "dates", "text": "Can you confirm Karan Oberoi's employment?", "response": "Executive Assistant to the Managing Partner, February 2019 to July 2025. Correct.", "clue": "c05_halden_dates" },
+				{ "id": "rehire", "text": "Would you rehire him?", "response": "...Off the record? No. Two clients' deal terms reached a competitor. The access logs pointed at his account. He resigned before the inquiry finished, so nothing was ever proven.", "clue": "c05_halden_warning" },
+				{ "id": "skills", "text": "Was he good at the job?", "response": "Exceptionally. That was rather the problem. He knew everything about everyone.", "clue": "" }
+			],
+			"goodbye": "Please don't quote me."
+		},
+		"ref_c05_dsouza": {
+			"name": "Diana D'Souza — mobile", "number": "98765 55055", "candidate": "c05",
+			"availability": "answers", "max_calls": 1, "max_questions": 2,
+			"greeting": "Diana speaking. Oh — Karan's reference. Of course.",
+			"questions": [
+				{ "id": "work", "text": "How was Karan to work with?", "response": "Discreet, brilliant, indispensable. Any executive would be lucky.", "clue": "c05_dsouza_praise" },
+				{ "id": "now", "text": "Where are you working now?", "response": "I don't see how that's relevant. I'm— sorry, I have another call.", "clue": "c05_dsouza_evasive" },
+				{ "id": "leak", "text": "Do you know why he left Halden & Rao?", "response": "Career growth. Everyone leaves Halden eventually.", "clue": "" }
+			],
+			"goodbye": ""
+		},
+		"ref_c06_self": {
+			"name": "Ira Mehra — listed contact", "number": "020 4113 1313", "candidate": "c06",
+			"availability": "automated", "max_calls": 2, "max_questions": 0,
+			"greeting": "[Automated voice] \"You have reached Ashgrove Holdings. Internal line one-three-one-three. Recruitment. Please hold.\" ...The hold music is the sound of rain.",
+			"questions": [],
+			"clue": "c06_phone_1313",
+			"goodbye": "The line clicks. On your desk, the phone's display flickers: LINE 1 — 1313."
+		},
+		"ref_c06_college": {
+			"name": "Godavari Arts College — office", "number": "0253 555 6602", "candidate": "c06",
+			"availability": "no_answer", "max_calls": 1, "max_questions": 0,
+			"greeting": "[Recorded message] \"The number you have dialled is no longer in service.\"",
+			"questions": [],
+			"clue": "",
+			"goodbye": ""
+		},
+		"ashgrove_records": {
+			"name": "Ashgrove Records Office (internal)", "number": "220", "candidate": "c06",
+			"availability": "answers", "max_calls": 1, "max_questions": 2,
+			"greeting": "Records. It's late. Make it quick.",
+			"questions": [
+				{ "id": "file", "text": "I need the personnel file for Ira Mehra, former Executive Assistant.", "response": "Mehra... That file is sealed. By order of the CEO's office. I can't even tell you why.", "clue": "c06_records_sealed" },
+				{ "id": "predecessor", "text": "Who held my job before me?", "response": "You don't know? ...I'd ask Aditya. I wouldn't ask him tonight.", "clue": "" },
+				{ "id": "floor13", "text": "Has anyone else worked on Floor 13 recently?", "response": "Only you, as far as the badge logs say. Only ever you.", "clue": "" }
+			],
+			"goodbye": "Goodnight, Alice."
+		}
+	}
+}
