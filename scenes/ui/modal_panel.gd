@@ -18,6 +18,8 @@ signal closed
 @export var panel_size: Vector2 = Vector2(1300, 780)
 @export var accent: Color = UITheme.ACCENT
 @export var dim_backdrop: bool = true
+## False for panels that demand a choice (CEO intervention): no close button, Esc ignored.
+@export var closable: bool = true
 
 var context: Dictionary = {}
 var content: VBoxContainer
@@ -68,6 +70,10 @@ func is_closing() -> bool:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if _closing:
+		return
+	if not closable:
+		if event.is_action_pressed(&"pause") or event.is_action_pressed(&"ui_cancel"):
+			get_viewport().set_input_as_handled() # a choice is required
 		return
 	if event.is_action_pressed(&"pause") or event.is_action_pressed(&"ui_cancel"):
 		get_viewport().set_input_as_handled()
@@ -134,6 +140,7 @@ func _build_frame() -> void:
 	close_btn.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	close_btn.add_theme_font_size_override(&"font_size", 17)
 	close_btn.pressed.connect(close)
+	close_btn.visible = closable
 	header.add_child(close_btn)
 
 	var rule := ColorRect.new()
@@ -166,6 +173,22 @@ func _animate_open() -> void:
 	tw.tween_property(_backdrop, "modulate:a", 1.0, 0.25)
 	tw.tween_property(frame, "modulate:a", 1.0, 0.25)
 	tw.tween_property(frame, "scale", Vector2.ONE, 0.32).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+
+
+## Opens another panel in place of this one (through the PanelHost).
+func switch_panel(scene: PackedScene, ctx: Dictionary = {}) -> void:
+	var host := context.get("host") as PanelHost
+	if host:
+		host.switch_to(scene, ctx)
+	else:
+		close()
+
+
+## Removes all children of the content box (for panels that change views).
+func clear_content() -> void:
+	for child in content.get_children():
+		content.remove_child(child)
+		child.queue_free()
 
 
 # --- Small builders shared by panels -----------------------------------------

@@ -17,6 +17,7 @@ var glint: float = 0.0:
 		if _emissive:
 			_emissive.queue_redraw()
 
+var glint_color: Color = Color(0.85, 0.92, 1.0)
 var _emissive: Node2D
 
 
@@ -100,5 +101,5 @@ func _draw_glint() -> void:
 	if who != Who.ADITYA or glint <= 0.01:
 		return
 	for x in [-20.0, 20.0]:
-		Paint.soft(_emissive, Vector2(x, -3), Vector2(22, 12), Color(0.85, 0.92, 1.0, 0.8 * glint), true)
-		_emissive.draw_rect(Rect2(x - 10, -8, 20, 3), Color(1, 1, 1, 0.9 * glint))
+		Paint.soft(_emissive, Vector2(x, -3), Vector2(22, 12), Color(glint_color, 0.8 * glint), true)
+		_emissive.draw_rect(Rect2(x - 10, -8, 20, 3), Color(glint_color.lightened(0.5), 0.9 * glint))

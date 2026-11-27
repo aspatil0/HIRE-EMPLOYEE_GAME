@@ -1,0 +1,60 @@
+{
+	"id": "phase_2_candidates",
+	"notes": "Short narrative responses after each decision, and recruitment-report endings. Responses never reveal whether the decision was correct.",
+	"responses": {
+		"c01": {
+			"accept": "You stamp the file. Somewhere in Pune, a man who checks every number twice will get a phone call tomorrow.",
+			"reject": "The file goes into the out-tray. The age on the first page stares up at you: 56.",
+			"investigate": "You set Sham Mathur's file aside. Not yet."
+		},
+		"c02": {
+			"accept": "APPROVED. The system issues a provisional access request: Systems Administrator, all floors, all servers.",
+			"reject": "REJECTED. Your terminal beeps once, softly, as if the system had been expecting him.",
+			"investigate": "Arjun Malhotra's perfect resume goes back on the stack. Perfect is a word that should worry you."
+		},
+		"c03": {
+			"accept": "You stamp the file. The resume has a coffee ring on it. You decide you like him for that.",
+			"reject": "The modest resume slides into the out-tray. It looks like it expected to.",
+			"investigate": "Ravi Shetty stays in the pile, underlined twice."
+		},
+		"c04": {
+			"accept": "APPROVED. Farah Qureshi's experience letter is filed with the rest. The typeface still bothers you.",
+			"reject": "REJECTED. You wonder how much of her story was true, and which part wasn't.",
+			"investigate": "You keep Farah Qureshi's papers open. Three addresses, two spellings, one letter that doesn't sit right."
+		},
+		"c05": {
+			"accept": "APPROVED. Within a minute an email arrives from Karan Oberoi: \"Thank you. When can I see the CEO's calendar?\"",
+			"reject": "REJECTED. The rain gets louder. Your inbox shows one unread message from him, then none.",
+			"investigate": "Karan Oberoi waits. Something about him wants to be trusted very quickly."
+		},
+		"c06": {
+			"accept": "APPROVED. The lights on Floor 13 flicker once. Somewhere a door you locked is no longer locked.",
+			"reject": "REJECTED. You put her file in the out-tray. When you look again, it is on top of the stack.",
+			"investigate": "Ira Mehra's file stays open. The rain sounds like it is inside the building now."
+		}
+	},
+	"endings": {
+		"perfect": {
+			"title": "THE FINAL HIRE",
+			"text": "Every decision held. The dashboard turns green, one line at a time. Upstairs, Aditya reads your report twice and says nothing for a very long time. Then: \"You are exactly what I was looking for.\" It does not sound like praise."
+		},
+		"breach": {
+			"title": "THE BREACH",
+			"text": "A badge is printed for someone who should never have had one. By the time the access logs are read, it will be too late to say you didn't know. Aditya already has a folder with your name on it."
+		},
+		"empty_desks": {
+			"title": "EMPTY DESKS",
+			"text": "You turned away people who would have held this company together. The desks on Floor 13 stay empty. Aditya does not shout this time. He simply writes a number on a sticky note and leaves it on your monitor."
+		},
+		"acceptable_losses": {
+			"title": "ACCEPTABLE LOSSES",
+			"text": "Some decisions were right. Some were not. In the morning nobody will know which, except the evidence — and whoever reads it after you."
+		}
+	},
+	"ira_thread": {
+		"accept": "Ira Mehra starts Monday. Her badge photo has already been printed. Someone printed it in 2023.",
+		"reject": "Ira Mehra's application was rejected. At 03:13, a new one arrives with the same name, the same photo, and tomorrow's date.",
+		"none": "Ira Mehra's file was never decided. It is still open on your desk. So is the door."
+	},
+	"phase3_hook": "UNREAD MESSAGE — 03:13 — from terminal 13-A: \"you were not the first. you were the sixth. check who signed your file.\""
+}

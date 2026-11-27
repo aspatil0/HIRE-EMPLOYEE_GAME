@@ -1,0 +1,92 @@
+{
+	"id": "phase_2_ending",
+	"notes": "Perfect-recruitment ending: Aditya's cabin. 'shared' branch if Alice sent the hired names to the unknown sender, otherwise 'kept_quiet'.",
+	"summon": [
+		{
+			"speaker": "ADITYA (PHONE)",
+			"text": "Six files. Not one mistake."
+		},
+		{
+			"speaker": "ADITYA (PHONE)",
+			"text": "Come up to my cabin, Alice. Now."
+		}
+	],
+	"common": [
+		{
+			"speaker": "",
+			"text": "Floor 31. Aditya's cabin. He is not angry. That is worse."
+		},
+		{
+			"speaker": "ADITYA",
+			"text": "Sit down, Alice. I want to share something with you."
+		},
+		{
+			"speaker": "ALICE",
+			"text": "What is it, sir?"
+		},
+		{
+			"speaker": "ADITYA",
+			"text": "A lot of people in this company have gone missing. Recruiters, mostly. People who sat in your chair."
+		},
+		{
+			"speaker": "ALICE",
+			"text": "Missing...? Why?"
+		},
+		{
+			"speaker": "ADITYA",
+			"text": "Ashgrove is one of the top companies in this country. As its CEO, my job is to protect information."
+		}
+	],
+	"shared": [
+		{
+			"speaker": "ADITYA",
+			"text": "Which is why I know you sent those names in an email tonight."
+		},
+		{
+			"speaker": "ADITYA",
+			"text": "It is very hard for me to work with someone like that, Alice."
+		},
+		{
+			"speaker": "ALICE",
+			"text": "Sir, please — I didn't know who it was. I'm sorry. I'm so sorry. Please."
+		},
+		{
+			"speaker": "ADITYA",
+			"text": "No worries, Alice."
+		},
+		{
+			"speaker": "ADITYA",
+			"text": "No worries at all."
+		}
+	],
+	"kept_quiet": [
+		{
+			"speaker": "ADITYA",
+			"text": "Someone asked you for those names tonight. You said nothing."
+		},
+		{
+			"speaker": "ADITYA",
+			"text": "Good. Loyalty is rarer than talent. Go home, Alice. Tomorrow there will be more files."
+		},
+		{
+			"speaker": "ALICE",
+			"text": "...Yes, sir. Goodnight."
+		}
+	],
+	"missing_poster": {
+		"title": "MISSING",
+		"name": "ALICE",
+		"details": "Recruitment, Floor 13 — Ashgrove Holdings",
+		"footer": "Anyone with information, contact Ashgrove Security. Do not approach Floor 13 after dark."
+	},
+	"final_email_shared": {
+		"from": "(unknown sender)",
+		"subject": "re: the names",
+		"body": "Hi Alice,\n\nDon't share the details with me.\n\nIt's your boss."
+	},
+	"final_email_quiet": {
+		"from": "(unknown sender)",
+		"subject": "(no subject)",
+		"body": "Alice, please reply to me.\n\nPlease."
+	}
+}

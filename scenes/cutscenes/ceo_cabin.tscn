@@ -1,0 +1,91 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scenes/cutscenes/ceo_cabin.gd" id="1_fired"]
+[ext_resource type="Script" path="res://scenes/cutscenes/art/aditya_office_art.gd" id="2_art"]
+[ext_resource type="PackedScene" path="res://scenes/environment/night_window.tscn" id="3_window"]
+[ext_resource type="Script" path="res://scenes/cutscenes/art/character_figures.gd" id="4_figure"]
+[ext_resource type="Script" path="res://scripts/components/lighting_rig.gd" id="5_rig"]
+[ext_resource type="PackedScene" path="res://scenes/ui/screen_effects.tscn" id="6_fx"]
+[ext_resource type="PackedScene" path="res://scenes/ui/dialogue_box.tscn" id="7_dialogue"]
+[ext_resource type="PackedScene" path="res://scenes/ui/pause_menu.tscn" id="8_pause"]
+
+[node name="CEOCabin" type="Node2D"]
+script = ExtResource("1_fired")
+
+[node name="Stage" type="Node2D" parent="."]
+position = Vector2(-58, -38)
+scale = Vector2(1.06, 1.06)
+
+[node name="Walls" type="Node2D" parent="Stage"]
+script = ExtResource("2_art")
+
+[node name="NightWindow" parent="Stage" instance=ExtResource("3_window")]
+position = Vector2(330, 60)
+size = Vector2(1260, 560)
+frame_width = 22.0
+mullions_x = 3
+blinds = 0.0
+rain_count = 300
+seed_value = 21
+lightning_interval = Vector2(16, 34)
+skyline_scale = 1.35
+draw_sill = false
+
+[node name="Back" type="Node2D" parent="Stage"]
+script = ExtResource("2_art")
+layer = 1
+
+[node name="Aditya" type="Node2D" parent="Stage"]
+position = Vector2(960, 450)
+scale = Vector2(1.06, 1.06)
+script = ExtResource("4_figure")
+
+[node name="Desk" type="Node2D" parent="Stage"]
+script = ExtResource("2_art")
+layer = 2
+
+[node name="Alice" type="Node2D" parent="Stage"]
+position = Vector2(1660, 690)
+scale = Vector2(-1, 1)
+script = ExtResource("4_figure")
+who = 1
+
+[node name="LightingRig" type="ColorRect" parent="Stage"]
+z_index = 50
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+script = ExtResource("5_rig")
+ambient = Color(0.14, 0.13, 0.17, 1)
+
+[node name="ScreenEffects" parent="." instance=ExtResource("6_fx")]
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="LetterboxTop" type="ColorRect" parent="UI"]
+unique_name_in_owner = true
+offset_right = 1920.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="LetterboxBottom" type="ColorRect" parent="UI"]
+unique_name_in_owner = true
+offset_top = 1080.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="DialogueBox" parent="UI" instance=ExtResource("7_dialogue")]
+
+[node name="Overlay" type="Control" parent="UI"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("8_pause")]

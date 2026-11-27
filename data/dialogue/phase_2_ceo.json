@@ -1,0 +1,114 @@
+{
+	"id": "phase_2_ceo",
+	"notes": "CEO interventions. Every wrong decision is a strike. Strikes 1-2: Aditya walks into Alice's office with a warning (the 2nd uses final_headline/final_lines). Strike 3: summon + fired. {name} = candidate, {mistakes} = list.",
+	"interventions": {
+		"reject_good": {
+			"headline": "ALICE! WAIT!",
+			"lines": [
+				"Do you even understand who you just rejected?",
+				"{name} was one of the strongest applicants we received tonight.",
+				"This is your last chance, Alice. Reopen the file and do it neatly.",
+				"Or you will see what I do with you."
+			],
+			"review_label": "REVIEW CANDIDATE",
+			"keep_label": "KEEP REJECTION",
+			"final_headline": "AGAIN, ALICE? AGAIN?",
+			"final_lines": [
+				"That is the second time tonight you have thrown away someone this company needed.",
+				"{name}. Look at the file. Look at it properly.",
+				"This is your FINAL warning.",
+				"One more mistake and you will be standing in my office, not yours."
+			]
+		},
+		"accept_dangerous": {
+			"headline": "ALICE, WHAT HAVE YOU DONE?",
+			"lines": [
+				"You approved {name} without checking the employment history?",
+				"Do you realise what one wrong person with a badge could cost this company?",
+				"This is your last chance, Alice. Do it neatly this time.",
+				"Or you will see what I do with you."
+			],
+			"lines_if_warned": [
+				"You SAW the warning signs on {name}. You logged them yourself.",
+				"And you approved the application anyway?",
+				"This is your last chance, Alice. Fix it. Neatly.",
+				"Or you will see what I do with you."
+			],
+			"review_label": "REVIEW DECISION",
+			"keep_label": "KEEP ACCEPTANCE",
+			"final_headline": "TWICE. YOU DID IT TWICE.",
+			"final_lines": [
+				"You have now tried to put two wrong people inside this building.",
+				"{name} does not get a badge while I am alive.",
+				"This is your FINAL warning.",
+				"One more mistake and you will be standing in my office, not yours."
+			]
+		}
+	},
+	"after_keep": {
+		"reject_good": "...Your name is on that file now. Remember that I warned you.",
+		"accept_dangerous": "Then whatever happens next is on you. And so am I."
+	},
+	"after_review": {
+		"reject_good": "Good. Read it properly this time. I'll be watching the dashboard.",
+		"accept_dangerous": "Faster, Alice. I won't come down here twice."
+	},
+	"report_call": [
+		{
+			"speaker": "ADITYA (PHONE)",
+			"text": "Six files. Six decisions. I've seen the dashboard."
+		},
+		{
+			"speaker": "ADITYA (PHONE)",
+			"text": "Print your report, Alice. I want it on my desk before the rain stops."
+		}
+	],
+	"summon": [
+		{
+			"speaker": "ADITYA",
+			"text": "Three files, Alice. Three mistakes."
+		},
+		{
+			"speaker": "ADITYA",
+			"text": "I warned you. Twice."
+		},
+		{
+			"speaker": "ADITYA",
+			"text": "My office. Now."
+		}
+	],
+	"fired": [
+		{
+			"speaker": "",
+			"text": "Floor 31. The executive office. The rain is louder up here."
+		},
+		{
+			"speaker": "ADITYA",
+			"text": "Sit down. No — stand. This won't take long."
+		},
+		{
+			"speaker": "ADITYA",
+			"text": "Tonight you {mistakes}."
+		},
+		{
+			"speaker": "ADITYA",
+			"text": "I gave you two chances. Most people in this building never get one."
+		},
+		{
+			"speaker": "ALICE",
+			"text": "Sir, the evidence was— I can fix this. Give me the files back."
+		},
+		{
+			"speaker": "ADITYA",
+			"text": "There is nothing left to fix. Leave your badge on my desk."
+		},
+		{
+			"speaker": "ADITYA",
+			"text": "Alice... you're fired."
+		}
+	],
+	"game_over": {
+		"title": "TERMINATED",
+		"text": "Alice's access card stops working at 03:13. By morning her desk on Floor 13 has been cleared, and a new name is being printed for the door. The rain does not stop."
+	}
+}

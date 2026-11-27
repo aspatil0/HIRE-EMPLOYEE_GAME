@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" path="res://scenes/ui/dialogue_box.tscn" id="21_dialogue"]
 [ext_resource type="PackedScene" path="res://scenes/ui/interaction_tooltip.tscn" id="22_tip"]
 [ext_resource type="PackedScene" path="res://scenes/ui/pause_menu.tscn" id="23_pause"]
+[ext_resource type="Script" path="res://scenes/locations/art/ceo_intruder.gd" id="24_ceo"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_add"]
 blend_mode = 1
@@ -58,6 +59,9 @@ brighten = false
 
 [node name="Shape1" type="CollisionPolygon2D" parent="Environment/Room/ShelfHotspot"]
 polygon = PackedVector2Array(36, 104, 426, 104, 426, 330, 36, 330)
+
+[node name="CEOIntruder" type="Node2D" parent="Environment"]
+script = ExtResource("24_ceo")
 
 [node name="NightWindow" parent="Environment" instance=ExtResource("4_window")]
 position = Vector2(580, 82)
@@ -145,6 +149,15 @@ mouse_filter = 2
 script = ExtResource("20_host")
 
 [node name="DialogueBox" parent="UI" instance=ExtResource("21_dialogue")]
+
+[node name="Flash" type="ColorRect" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.75, 0.02, 0.02, 0)
 
 [node name="InteractionTooltip" parent="UI" instance=ExtResource("22_tip")]
 

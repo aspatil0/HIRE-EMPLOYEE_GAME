@@ -1,0 +1,77 @@
+{
+	"id": "c01",
+	"index": 1,
+	"resume": {
+		"name": "Sham Mathur",
+		"claimed_age": 56,
+		"dob": "29-08-1986",
+		"gender": "Male",
+		"address": "Flat 12, Shantiban Society, Kothrud",
+		"city": "Pune",
+		"phone": "+91 98765 10101",
+		"email": "sham.mathur@mailnet.in",
+		"position": "Senior Accountant",
+		"education": {
+			"qualification": "M.Com (Accounting & Finance)",
+			"institution": "Deccan College of Commerce, Pune",
+			"year": "2009",
+			"score": "68%",
+			"certifications": ["CMA Intermediate (2012)", "Tally Certified Professional (2016)"]
+		},
+		"experience": [
+			{ "company": "Sahyadri Agro Exports Pvt. Ltd.", "designation": "Senior Accounts Officer", "joined": "06-2015", "left": "09-2026", "salary": "₹9.6 LPA", "reason": "Company relocating its finance operations to Bengaluru." },
+			{ "company": "Kulkarni & Bhave Chartered Accountants", "designation": "Audit Assistant", "joined": "07-2009", "left": "05-2015", "salary": "₹4.2 LPA", "reason": "Moved to an in-house finance role." }
+		],
+		"total_experience": "17 years",
+		"skills": ["Statutory compliance", "GST & TDS filing", "Month-end close", "Tally ERP / SAP B1", "Vendor reconciliation"],
+		"achievements": ["Cut Sahyadri's month-end close from 9 days to 4.", "Recovered ₹31 lakh in duplicate vendor payments during a 2019 audit."],
+		"references": [
+			{ "name": "HR Desk, Sahyadri Agro Exports", "relation": "Most recent employer", "contact": "ref_c01_sahyadri" },
+			{ "name": "Anil Bhave", "relation": "Partner, Kulkarni & Bhave CA (first employer)", "contact": "ref_c01_bhave" }
+		],
+		"expected_salary": "₹12 LPA",
+		"notice_period": "Immediate (relieved 30-09-2026)",
+		"statement": "I am a careful, unhurried accountant. I would rather close the books a day late than close them wrong.",
+		"footer": "Resume prepared and submitted by CareerNest Placements, Pune (ref. CN-56-2214)."
+	},
+	"documents": {
+		"aadhaar": { "name": "Sham Mathur", "dob": "29-08-1986", "gender": "Male", "address": "Flat 12, Shantiban Society, Kothrud, Pune 411038", "city": "Pune", "number": "XXXX XXXX 0161", "issued": "2018" },
+		"pan": { "name": "Sham Mathur", "dob": "29-08-1986", "number": "FICPM0161S" },
+		"passport": { "name": "Sham Mathur", "dob": "29-08-1986", "address": "Kothrud, Pune", "city": "Pune", "number": "F0161284", "expiry": "14-02-2031" },
+		"employment": { "issuer": "Sahyadri Agro Exports Pvt. Ltd.", "kind": "Relieving letter", "company": "Sahyadri Agro Exports Pvt. Ltd.", "designation": "Senior Accounts Officer", "joined": "06-2015", "left": "09-2026", "signed_by": "R. Deshpande, Head of HR" },
+		"education": { "issuer": "Deccan College of Commerce", "kind": "Degree certificate", "institution": "Deccan College of Commerce, Pune", "qualification": "M.Com (Accounting & Finance)", "year": "2009", "score": "68%" }
+	},
+	"row_notes": {
+		"age": { "note": "The ID card's date of birth makes him 40. The resume says 56. Sixteen years is not a rounding error.", "clue": "c01_age_mismatch" },
+		"aadhaar.dob": { "note": "Date of birth on the ID card matches the resume exactly." },
+		"employment.left": { "note": "The relieving letter confirms he left Sahyadri in September 2026.", "clue": "c01_relieving_ok" }
+	},
+	"clues": {
+		"c01_age_claim": { "text": "Resume lists his age as 56.", "category": "identity", "kind": "visible", "source": "resume" },
+		"c01_agency": { "text": "The resume was formatted and submitted by a placement agency (CareerNest), not by the candidate himself.", "category": "identity", "kind": "visible", "source": "resume" },
+		"c01_experience_span": { "text": "17 years of experience starting in 2009: a career timeline that fits a man in his late 30s, not 56.", "category": "employment", "kind": "visible", "source": "resume" },
+		"c01_relieved": { "text": "Immediate availability: Sahyadri is relocating its finance team out of Pune.", "category": "employment", "kind": "visible", "source": "resume" },
+		"c01_age_mismatch": { "text": "CONTRADICTION: claimed age 56, but the DOB on his ID (29-08-1986) makes him 40.", "category": "identity", "kind": "major", "contradiction": true, "resolved_by": "c01_agency_error", "source": "document" },
+		"c01_relieving_ok": { "text": "Relieving letter matches the resume: Senior Accounts Officer, 06-2015 to 09-2026.", "category": "employment", "kind": "deep", "source": "document" },
+		"c01_agency_error": { "text": "CareerNest admits its template overwrote the age field with the file code \"56\" on several resumes. Corrected copy shows age 40.", "category": "identity", "kind": "deep", "source": "email / call" },
+		"c01_sahyadri_confirms": { "text": "Sahyadri HR confirms his role and dates and calls him \"the most reliable person in finance\". He is leaving only because the team is relocating.", "category": "reference", "kind": "deep", "source": "call" },
+		"c01_bhave_praise": { "text": "His first employer says he once refused to sign off a client's inflated invoices, at the cost of the firm's biggest account.", "category": "conduct", "kind": "deep", "source": "call" },
+		"c01_bhave_slow": { "text": "Former partner notes he was \"slow, painfully thorough\" and missed two filing deadlines in his first year.", "category": "conduct", "kind": "deep", "source": "call" },
+		"c01_fraud_news": { "text": "A news archive headline: \"Sham Mathur, 56, held in cooperative bank fraud\".", "category": "conduct", "kind": "misleading", "contradiction": true, "resolved_by": "c01_fraud_other", "source": "search" },
+		"c01_fraud_other": { "text": "Follow-up report: the accused is Shamrao K. Mathur, 56, of Nagpur. A different person.", "category": "identity", "kind": "deep", "source": "search" },
+		"c01_cma_verified": { "text": "Institute portal: CMA Intermediate pass for Sham Mathur (2012) is verified.", "category": "education", "kind": "deep", "source": "search" }
+	},
+	"search": [
+		{ "id": "s01_news", "terms": ["sham mathur", "mathur", "fraud"], "source": "Vidarbha Daily — archive", "url": "vidarbhadaily.in/archive/2025/03", "title": "Sham Mathur, 56, held in cooperative bank fraud", "snippet": "Police arrested a 56-year-old accountant over ₹2.3 crore missing from a cooperative bank...", "body": "NAGPUR, March 2025. Police have arrested a 56-year-old accountant identified as Sham Mathur in connection with ₹2.3 crore missing from the Wardha Road Cooperative Bank. The accused had worked at the bank for eleven years. Further details are awaited.", "clue": "c01_fraud_news" },
+		{ "id": "s01_followup", "terms": ["sham mathur", "mathur", "fraud", "shamrao"], "source": "Vidarbha Daily — corrections", "url": "vidarbhadaily.in/corrections/2025-03-14", "title": "Correction: name of accused in bank fraud case", "snippet": "An earlier report misidentified the accused. The accused is Shamrao K. Mathur of Nagpur...", "body": "CORRECTION. Our report of 9 March misidentified the accused in the Wardha Road Cooperative Bank case. The accused is Shamrao K. Mathur, 56, a resident of Nagpur. We regret the error.", "clue": "c01_fraud_other" },
+		{ "id": "s01_cma", "terms": ["sham mathur", "cma", "verify", "certificate"], "source": "Institute of Cost Accountants — member verification", "url": "verify.icmai-portal.in", "title": "Verification result: MATHUR, SHAM", "snippet": "CMA Intermediate — passed June 2012 — status VERIFIED.", "body": "Candidate: MATHUR, SHAM. Examination: CMA Intermediate. Session: June 2012. Result: PASS. Verification status: VERIFIED.", "clue": "c01_cma_verified" },
+		{ "id": "s01_careernest", "terms": ["careernest", "placement", "sham mathur"], "source": "CareerNest Placements", "url": "careernest.co.in", "title": "CareerNest Placements — Pune's finance hiring partner", "snippet": "We format, polish and submit your resume to top employers.", "body": "CareerNest Placements. Resume formatting, interview preparation and employer submissions. Notice: some resumes generated between 1 and 15 November 2026 may show incorrect personal fields. Corrected copies are being sent to employers.", "clue": "" },
+		{ "id": "s01_sahyadri", "terms": ["sahyadri", "agro", "sham mathur"], "source": "Pune Business Wire", "url": "punebusinesswire.in/sahyadri-relocation", "title": "Sahyadri Agro moves finance ops to Bengaluru", "snippet": "The exporter will shift its accounts and treasury teams by October 2026...", "body": "Sahyadri Agro Exports will move its accounts and treasury teams to Bengaluru by October 2026. Employees who could not relocate have been relieved with full benefits.", "clue": "" }
+	],
+	"truth": {
+		"correct_decision": "accept",
+		"quality": "good",
+		"ceo_trigger": "reject_good",
+		"key_clues": ["c01_age_mismatch", "c01_agency_error", "c01_sahyadri_confirms"]
+	}
+}

@@ -122,7 +122,7 @@ func _draw_screen() -> void:
 	# Sidebar.
 	var side := Rect2(r.position + Vector2(0, 24), Vector2(112, r.size.y - 24))
 	s.draw_rect(side, Color(0.03, 0.08, 0.14))
-	var items := ["INBOX  (3)", "CANDIDATES", "DOCUMENTS", "COMPANY", "LOG OUT"]
+	var items := ["DASHBOARD", "REPORTS", "INBOX", "COMPANY", "LOG OUT"]
 	for i in items.size():
 		var y := side.position.y + 26 + i * 24
 		if i == 0:
@@ -132,14 +132,23 @@ func _draw_screen() -> void:
 	var x0 := side.end.x + 16
 	s.draw_string(mono, Vector2(x0, r.position.y + 50), "APPLICATIONS PENDING VERIFICATION", HORIZONTAL_ALIGNMENT_LEFT, -1, 12, Color(0.55, 0.72, 0.88))
 	s.draw_string(UITheme.sans(), Vector2(r.end.x - 70, r.position.y + 56), str(GameState.candidates_pending), HORIZONTAL_ALIGNMENT_LEFT, -1, 30, Color(0.95, 0.55, 0.45))
-	var rows := DataLoader.candidates(GameState.day)
+	var rows := Recruitment.candidates
 	for i in mini(rows.size(), 6):
 		var y := r.position.y + 82 + i * 26
+		var stat := Recruitment.status(rows[i].id)
+		var chip_text := "PENDING"
+		var chip_col := Color(0.6, 0.42, 0.12, 0.6)
+		if stat == "accepted":
+			chip_text = "ACCEPTED"
+			chip_col = Color(0.2, 0.5, 0.25, 0.7)
+		elif stat == "rejected":
+			chip_text = "REJECTED"
+			chip_col = Color(0.55, 0.12, 0.1, 0.7)
 		s.draw_rect(Rect2(x0 - 6, y - 16, r.end.x - x0 - 10, 22), Color(1, 1, 1, 0.03 if i % 2 == 0 else 0.0))
-		s.draw_string(mono, Vector2(x0, y), str(rows[i].get("name", "")).to_upper(), HORIZONTAL_ALIGNMENT_LEFT, -1, 11, Color(0.8, 0.9, 1.0))
-		s.draw_string(mono, Vector2(x0 + 126, y), str(rows[i].get("position", "")), HORIZONTAL_ALIGNMENT_LEFT, -1, 10, Color(0.5, 0.65, 0.8))
-		s.draw_rect(Rect2(r.end.x - 86, y - 12, 66, 15), Color(0.6, 0.42, 0.12, 0.6))
-		s.draw_string(mono, Vector2(r.end.x - 82, y), "PENDING", HORIZONTAL_ALIGNMENT_LEFT, -1, 10, Color(1, 0.9, 0.7))
+		s.draw_string(mono, Vector2(x0, y), rows[i].display_name().to_upper(), HORIZONTAL_ALIGNMENT_LEFT, -1, 11, Color(0.8, 0.9, 1.0))
+		s.draw_string(mono, Vector2(x0 + 126, y), rows[i].position(), HORIZONTAL_ALIGNMENT_LEFT, -1, 10, Color(0.5, 0.65, 0.8))
+		s.draw_rect(Rect2(r.end.x - 86, y - 12, 74, 15), chip_col)
+		s.draw_string(mono, Vector2(r.end.x - 82, y), chip_text, HORIZONTAL_ALIGNMENT_LEFT, -1, 10, Color(1, 0.9, 0.7))
 	if _cursor_on:
 		s.draw_rect(Rect2(x0, r.end.y - 26, 9, 15), Color(0.75, 0.88, 1.0, 0.9))
 	# CRT-ish finish: scanlines, glare, darkened corners.

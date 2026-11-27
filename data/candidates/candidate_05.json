@@ -1,0 +1,76 @@
+{
+	"id": "c05",
+	"index": 5,
+	"resume": {
+		"name": "Karan Oberoi",
+		"claimed_age": 36,
+		"dob": "23-05-1990",
+		"gender": "Male",
+		"address": "C-4/17, Vasant Kunj",
+		"city": "New Delhi",
+		"phone": "+91 98765 50505",
+		"email": "karan.oberoi@executivemail.in",
+		"position": "Executive Assistant",
+		"education": {
+			"qualification": "MBA (General Management)",
+			"institution": "Indraprastha School of Management, New Delhi",
+			"year": "2015",
+			"score": "8.7 CGPA",
+			"certifications": ["Certified Executive Assistant (2019)", "Advanced Business Communication (2016)"]
+		},
+		"experience": [
+			{ "company": "Halden & Rao Advisory", "designation": "Executive Assistant to the Managing Partner", "joined": "02-2019", "left": "07-2025", "salary": "₹14 LPA", "reason": "Wanted a role with broader responsibility." },
+			{ "company": "Crestline Hotels", "designation": "Guest Relations Manager", "joined": "06-2015", "left": "01-2019", "salary": "₹6.5 LPA", "reason": "Moved into corporate support." }
+		],
+		"total_experience": "10 years",
+		"skills": ["Executive calendar management", "Board meeting preparation", "Confidential correspondence", "Stakeholder communication", "Travel logistics"],
+		"achievements": ["Managed the Managing Partner's calendar across 14 time zones.", "Coordinated 40+ confidential deal meetings without a single scheduling conflict."],
+		"references": [
+			{ "name": "Diana D'Souza", "relation": "Former colleague, Halden & Rao", "contact": "ref_c05_dsouza" },
+			{ "name": "HR Department, Halden & Rao Advisory", "relation": "Previous employer", "contact": "ref_c05_halden" }
+		],
+		"expected_salary": "₹16 LPA",
+		"notice_period": "Immediate",
+		"statement": "A great assistant knows what the executive needs before the executive does. I would like to be that person for your CEO.",
+		"footer": ""
+	},
+	"documents": {
+		"aadhaar": { "name": "Karan Oberoi", "dob": "23-05-1990", "gender": "Male", "address": "C-4/17, Vasant Kunj, New Delhi 110070", "city": "New Delhi", "number": "XXXX XXXX 0505", "issued": "2020" },
+		"pan": { "name": "Karan Oberoi", "dob": "23-05-1990", "number": "FICPO0505K" },
+		"passport": { "name": "Karan Oberoi", "dob": "23-05-1990", "address": "Vasant Kunj, New Delhi", "city": "New Delhi", "number": "F0505622", "expiry": "30-11-2032" },
+		"employment": { "issuer": "Halden & Rao Advisory", "kind": "Experience letter", "company": "Halden & Rao Advisory", "designation": "Executive Assistant to the Managing Partner", "joined": "02-2019", "left": "07-2025", "signed_by": "S. Rao, Partner" },
+		"education": { "issuer": "Indraprastha School of Management", "kind": "Degree certificate", "institution": "Indraprastha School of Management, New Delhi", "qualification": "MBA (General Management)", "year": "2015", "score": "8.7 CGPA" }
+	},
+	"row_notes": {
+		"employment.left": { "note": "Dates and title match. The letter is short — two lines — and says nothing about his conduct.", "clue": "c05_letter_brief" },
+		"education.year": { "note": "Certificate matches the resume.", "clue": "c05_edu_ok" }
+	},
+	"clues": {
+		"c05_polished": { "text": "An exceptionally polished resume: MBA, executive assistant certification, six years supporting a managing partner.", "category": "education", "kind": "visible", "source": "resume" },
+		"c05_access": { "text": "Handled his former Managing Partner's confidential correspondence and deal calendar.", "category": "employment", "kind": "visible", "source": "resume" },
+		"c05_ceo_statement": { "text": "Personal statement is aimed squarely at working for \"your CEO\".", "category": "conduct", "kind": "visible", "source": "resume" },
+		"c05_interview": { "text": "HR phone screen: \"outstanding communicator\" — but he asked unusually detailed questions about the CEO's travel and board calendar.", "category": "conduct", "kind": "visible", "source": "email" },
+		"c05_edu_ok": { "text": "MBA certificate matches the resume.", "category": "education", "kind": "deep", "source": "document" },
+		"c05_letter_brief": { "text": "Experience letter confirms dates and title only. No comment on performance or conduct.", "category": "employment", "kind": "deep", "source": "document" },
+		"c05_halden_dates": { "text": "Halden & Rao HR confirms his dates and title.", "category": "reference", "kind": "deep", "source": "call" },
+		"c05_halden_warning": { "text": "Halden & Rao HR, off the record: NOT eligible for rehire. Two clients' deal terms leaked to a competitor; access logs pointed to his account. He resigned before the inquiry concluded.", "category": "conduct", "kind": "major", "contradiction": true, "source": "call" },
+		"c05_leak_news": { "text": "News: Halden & Rao lost a ₹40-crore mandate in 2025 after a client's confidential terms surfaced at Vantor Capital.", "category": "conduct", "kind": "deep", "source": "search" },
+		"c05_dsouza_vantor": { "text": "His reference, Diana D'Souza, now works at Vantor Capital — the competitor that received the leaked terms.", "category": "reference", "kind": "deep", "contradiction": true, "source": "search" },
+		"c05_dsouza_praise": { "text": "Diana D'Souza: \"Karan is discreet, brilliant, indispensable.\"", "category": "reference", "kind": "deep", "source": "call" },
+		"c05_dsouza_evasive": { "text": "Asked where she works now, Diana D'Souza deflects and ends the call.", "category": "reference", "kind": "deep", "source": "call" },
+		"c05_late_email": { "text": "At 01:42 he emailed recruitment asking for the CEO's weekly schedule \"to prepare in advance\".", "category": "conduct", "kind": "deep", "source": "email" },
+		"c05_review": { "text": "An anonymous review calls him \"arrogant\". Unverifiable and not job-relevant.", "category": "conduct", "kind": "misleading", "source": "search" }
+	},
+	"search": [
+		{ "id": "s05_leak", "terms": ["halden", "rao", "leak", "vantor", "karan oberoi"], "source": "The Delhi Ledger — business archive", "url": "delhiledger.in/2025/07/halden-mandate", "title": "Halden & Rao loses ₹40-crore mandate after deal terms surface at rival", "snippet": "Confidential terms of a pending acquisition appeared in a Vantor Capital counter-offer...", "body": "NEW DELHI, July 2025. Advisory firm Halden & Rao has lost a ₹40-crore mandate after confidential terms of a pending acquisition appeared, almost verbatim, in a counter-offer from Vantor Capital. Halden & Rao said an internal review was 'ongoing'. One staff member resigned during the review.", "clue": "c05_leak_news" },
+		{ "id": "s05_dsouza", "terms": ["diana d'souza", "dsouza", "d'souza", "vantor", "karan oberoi"], "source": "ProLink — professional profile", "url": "prolink.in/in/diana-dsouza", "title": "Diana D'Souza — VP Strategy, Vantor Capital", "snippet": "Vantor Capital (Aug 2025–present) · Halden & Rao Advisory (2017–2025)", "body": "Diana D'Souza. Vice President, Strategy — Vantor Capital (August 2025–present). Previously Associate Director, Halden & Rao Advisory (2017–2025).", "clue": "c05_dsouza_vantor" },
+		{ "id": "s05_review", "terms": ["karan oberoi", "oberoi", "review"], "source": "WorkGossip (anonymous)", "url": "workgossip.biz/r/oberoi", "title": "\"Arrogant, but gets things done\" — anonymous", "snippet": "1 anonymous review · unverified", "body": "Anonymous review, unverified: 'Arrogant. Treats juniors like furniture. Gets things done though.' The site does not verify reviewers' identities.", "clue": "c05_review" },
+		{ "id": "s05_isom", "terms": ["indraprastha", "mba", "karan oberoi", "verify"], "source": "Indraprastha School of Management — alumni", "url": "ism-delhi.edu/alumni/verify", "title": "Alumni verification: Karan Oberoi, MBA 2015", "snippet": "Status: VERIFIED", "body": "Alumni record: Karan Oberoi. Programme: MBA (General Management). Graduated: 2015. CGPA: 8.7. Status: VERIFIED.", "clue": "" }
+	],
+	"truth": {
+		"correct_decision": "reject",
+		"quality": "dangerous",
+		"ceo_trigger": "accept_dangerous",
+		"key_clues": ["c05_halden_warning", "c05_dsouza_vantor", "c05_leak_news"]
+	}
+}

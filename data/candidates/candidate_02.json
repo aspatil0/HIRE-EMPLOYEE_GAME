@@ -1,0 +1,77 @@
+{
+	"id": "c02",
+	"index": 2,
+	"resume": {
+		"name": "Arjun Malhotra",
+		"claimed_age": 34,
+		"dob": "11-03-1992",
+		"gender": "Male",
+		"address": "#41, 2nd Cross, Indiranagar",
+		"city": "Bengaluru",
+		"phone": "+91 98765 20202",
+		"email": "arjun.malhotra.ops@protonet.in",
+		"position": "Systems Administrator",
+		"education": {
+			"qualification": "B.Tech (Computer Science)",
+			"institution": "Southern Institute of Technology, Tiruchirappalli",
+			"year": "2014",
+			"score": "9.1 CGPA",
+			"certifications": ["RHCE (2016)", "CCNA (2015)", "Cloud Solutions Architect — Associate (2020)"]
+		},
+		"experience": [
+			{ "company": "Zentrix Cloud Solutions", "designation": "Lead Infrastructure Engineer", "joined": "08-2017", "left": "06-2025", "salary": "₹28 LPA", "reason": "Seeking a stable in-house role after a long consulting stint." },
+			{ "company": "Novabyte Systems", "designation": "Systems Engineer", "joined": "07-2014", "left": "07-2017", "salary": "₹9 LPA", "reason": "Growth opportunity at Zentrix." }
+		],
+		"total_experience": "11 years",
+		"skills": ["Linux hardening", "Identity & access management", "Network segmentation", "Backup & DR", "Automation (Ansible, Bash)"],
+		"achievements": ["Led migration of 400 servers to a private cloud with zero downtime.", "Designed Zentrix's privileged-access model for 60 client tenants."],
+		"references": [
+			{ "name": "Rahul Sen", "relation": "Former manager at Zentrix (personal mobile)", "contact": "ref_c02_sen" },
+			{ "name": "HR Department, Zentrix Cloud Solutions", "relation": "Previous employer", "contact": "ref_c02_zentrix" }
+		],
+		"expected_salary": "₹30 LPA",
+		"notice_period": "Immediate",
+		"statement": "Infrastructure is trust made physical. I build systems where nobody has more access than they need — including me.",
+		"footer": ""
+	},
+	"documents": {
+		"aadhaar": { "name": "Arjun Malhotra", "dob": "11-03-1992", "gender": "Male", "address": "#41, 2nd Cross, Indiranagar, Bengaluru 560038", "city": "Bengaluru", "number": "XXXX XXXX 0272", "issued": "2021" },
+		"pan": { "name": "Arjun Malhotra", "dob": "11-03-1992", "number": "FICPM0272A" },
+		"passport": { "name": "Arjun Malhotra", "dob": "11-03-1992", "address": "Indiranagar, Bengaluru", "city": "Bengaluru", "number": "F0272519", "expiry": "02-09-2029" },
+		"employment": { "issuer": "WorkVerify Background Bureau", "kind": "Third-party employment verification", "company": "Zentrix Cloud Solutions", "designation": "Senior Systems Engineer", "joined": "08-2017", "left": "03-2022", "signed_by": "WorkVerify automated report #WV-77810" },
+		"education": { "issuer": "Southern Institute of Technology", "kind": "Degree certificate", "institution": "Southern Institute of Technology, Tiruchirappalli", "qualification": "B.Tech (Computer Science)", "year": "2014", "score": "9.1 CGPA" }
+	},
+	"row_notes": {
+		"employment.left": { "note": "The bureau's record ends in March 2022. His resume runs to June 2025. Three years are unaccounted for.", "clue": "c02_left_conflict" },
+		"employment.designation": { "note": "The bureau lists him as Senior Systems Engineer, not Lead Infrastructure Engineer.", "clue": "c02_title_conflict" },
+		"education.score": { "note": "Certificate confirms the 9.1 CGPA.", "clue": "c02_edu_verified" }
+	},
+	"clues": {
+		"c02_stellar": { "text": "Outstanding record on paper: 9.1 CGPA, RHCE, CCNA, cloud architect certification.", "category": "education", "kind": "visible", "source": "resume" },
+		"c02_ref_personal": { "text": "His primary reference is reachable only on a personal mobile, not through Zentrix.", "category": "reference", "kind": "visible", "source": "resume" },
+		"c02_access_design": { "text": "Claims he designed the privileged-access model for 60 client tenants at Zentrix.", "category": "employment", "kind": "visible", "source": "resume" },
+		"c02_interview": { "text": "HR phone screen rated his technical depth 9.5 / 10, the highest this cycle.", "category": "conduct", "kind": "visible", "source": "email" },
+		"c02_edu_verified": { "text": "Degree certificate matches the resume (B.Tech 2014, 9.1 CGPA).", "category": "education", "kind": "deep", "source": "document" },
+		"c02_left_conflict": { "text": "CONTRADICTION: verification bureau says he left Zentrix in 03-2022; resume says 06-2025.", "category": "employment", "kind": "major", "contradiction": true, "source": "document" },
+		"c02_title_conflict": { "text": "CONTRADICTION: bureau records his title as Senior Systems Engineer, not Lead Infrastructure Engineer.", "category": "employment", "kind": "deep", "contradiction": true, "source": "document" },
+		"c02_zentrix_dates": { "text": "Zentrix HR confirms in writing only: employment ended March 2022.", "category": "reference", "kind": "deep", "source": "call" },
+		"c02_zentrix_termination": { "text": "Zentrix HR: he is marked INELIGIBLE FOR REHIRE. Terminated after an internal investigation into unauthorised access to client data.", "category": "conduct", "kind": "major", "source": "call" },
+		"c02_breach_news": { "text": "April 2022 report: Zentrix confirmed a client database breach traced to an insider account with elevated privileges.", "category": "conduct", "kind": "deep", "source": "search" },
+		"c02_sen_left": { "text": "Rahul Sen's professional profile shows he left Zentrix in 2019 — he could not have supervised Arjun until 2025.", "category": "reference", "kind": "deep", "source": "search" },
+		"c02_sen_praise": { "text": "Rahul Sen calls him \"the best engineer I've ever worked with\".", "category": "reference", "kind": "deep", "source": "call" },
+		"c02_sen_conflict": { "text": "Rahul Sen admits Arjun has been \"consulting\" for Sen's own firm since 2022: the reference is a business partner.", "category": "reference", "kind": "deep", "source": "call" },
+		"c02_forum": { "text": "A security forum user \"amalhotra\" posts helpful Linux tutorials. Probably him; nothing alarming.", "category": "conduct", "kind": "misleading", "source": "search" }
+	},
+	"search": [
+		{ "id": "s02_breach", "terms": ["zentrix", "breach", "arjun malhotra", "malhotra"], "source": "TechLedger India — archive", "url": "techledger.in/2022/04/zentrix-breach", "title": "Zentrix confirms client data breach, cites insider access", "snippet": "The cloud provider said an account with elevated privileges exported client records over six weeks...", "body": "BENGALURU, April 2022. Zentrix Cloud Solutions has confirmed that records belonging to at least nine client tenants were exported over a six-week period using an internal account with elevated privileges. 'The individual is no longer with the company,' a spokesperson said. Zentrix declined to name the employee.", "clue": "c02_breach_news" },
+		{ "id": "s02_sen", "terms": ["rahul sen", "sen", "arjun malhotra", "zentrix"], "source": "ProLink — professional profile", "url": "prolink.in/in/rahul-sen-infra", "title": "Rahul Sen — Director, Sen Infra Consulting", "snippet": "Zentrix Cloud Solutions (2013–2019) · Sen Infra Consulting (2019–present)...", "body": "Rahul Sen. Director, Sen Infra Consulting (2019–present). Previously: Engineering Manager, Zentrix Cloud Solutions (2013–2019). Sen Infra Consulting provides infrastructure audits and privileged-access reviews.", "clue": "c02_sen_left" },
+		{ "id": "s02_forum", "terms": ["arjun malhotra", "malhotra", "amalhotra", "linux"], "source": "OpsForum", "url": "opsforum.net/u/amalhotra", "title": "amalhotra — 212 posts", "snippet": "Hardening SSH on Ubuntu: a practical checklist...", "body": "User amalhotra. Member since 2016. Recent posts: 'Hardening SSH on Ubuntu', 'Why your backups are lying to you', 'Least privilege is a habit, not a policy'.", "clue": "c02_forum" },
+		{ "id": "s02_zentrix", "terms": ["zentrix", "cloud"], "source": "Zentrix Cloud Solutions", "url": "zentrix.cloud/about", "title": "Zentrix — About us", "snippet": "Trusted by 60+ enterprises for secure private cloud.", "body": "Zentrix Cloud Solutions. Founded 2011. Security is our foundation. Employment verification requests: please use an accredited background bureau; we do not confirm details by telephone.", "clue": "" }
+	],
+	"truth": {
+		"correct_decision": "reject",
+		"quality": "dangerous",
+		"ceo_trigger": "accept_dangerous",
+		"key_clues": ["c02_left_conflict", "c02_zentrix_termination", "c02_sen_conflict"]
+	}
+}
